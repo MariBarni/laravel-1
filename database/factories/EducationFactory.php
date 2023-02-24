@@ -17,12 +17,19 @@ class EducationFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => $this->faker->paragraphs(3, true),
+            'field_of_study' => $this->faker->word(),
+            'degree'=> $this->faker->word(),
             'current' => $current = $this->faker->boolean(),
-            'profile_id' => Profile::factory(),
-            'institution_id' => Institution::factory(),
-            'started_at' => $startDate = now()->subMonths($this->faker->numberBetween(1, 16)),
-            'finished_at' => $current ? null : $startDate->addMonths($this->faker->numberBetween(1, 6)),
+            'started_at' => now()->subMonths(
+                $this->faker->numberBetween(3,12)
+            ),
+            'finished_at' => $current?null: now()->addMonths(
+                $this->faker->numberBetween(3,12)
+            ),
+            'sort'=>  $this->faker->randomDigit(),
+            'institution_id' =>  $this->faker->randomDigit(),  
+            'profile_id' =>  $this->faker->randomDigit()  
+            
         ];
     }
 }

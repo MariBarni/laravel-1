@@ -18,10 +18,9 @@ return new class extends Migration
             $table->date('started_at');
             $table->date('finished_at')->nullable();
             $table->integer('sort')->nullable();
-            $table->foreignId('job_title_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
-
+            $table->foreignId('job_title_id');
+            $table->foreignId('company_id');
+            $table->foreignId('profile_id');
             $table->timestamps();
         });
     }

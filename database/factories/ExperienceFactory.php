@@ -19,11 +19,17 @@ class ExperienceFactory extends Factory
         return [
             'description' => $this->faker->paragraphs(3, true),
             'current' => $current = $this->faker->boolean(),
-            'profile_id' => Profile::factory(),
-            'job_title_id' => JobTitle::factory(),
-            'company_id' => Company::factory(),
-            'started_at' => $startDate = now()->subMonths($this->faker->numberBetween(1, 16)),
-            'finished_at' => $current ? null : $startDate->addMonths($this->faker->numberBetween(1, 6)),
+            'started_at' => now()->subMonths(
+                $this->faker->numberBetween(3,12)
+            ),
+            'finished_at' => $current?null: now()->addMonths(
+                $this->faker->numberBetween(3,12)
+            ),
+            
+            'job_title_id' =>  $this->faker->randomDigit(), 
+            'company_id' =>  $this->faker->randomDigit(), 
+            'profile_id' =>  $this->faker->randomDigit() 
+           
         ];
     }
 }

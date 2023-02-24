@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Language extends Model
 {
     use HasFactory;
-    public function profile():BelongsTo
-    {
-        return $this->belongsTo(Profile::class);
-    }
+    public function profiles():HasMany
+{
+    return $this->hasMany(Profiles::class);
+}
 }

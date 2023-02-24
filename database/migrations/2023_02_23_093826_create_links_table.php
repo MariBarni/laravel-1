@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('token');
             $table->string('template');
-            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('profile_id');
 
             $table->timestamps();
         });

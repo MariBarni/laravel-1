@@ -16,22 +16,22 @@ class ProfileFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'biography' => $this->faker->paragraphs(5, true),
-            'name' => $this->faker->name(),
-            'lastname' => $this->faker->name(),
+        return [            
+            'name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(), 
+            "jobtitle_id" =>  $this->faker->randomDigit(),
             'email'=> $this->faker->email(),
             'phone'=> $this->faker->phoneNumber(),
             'birthday'=> $this->faker->date($format = 'Y-m-d', $max = 'now'),
             'address'=> $this->faker->streetAddress(),
             'plz'=> $this->faker->postcode(),
             'City'=> $this->faker->city(),
-            'Country'=> $this->faker->country (),
-            'profileimg'=> $this->faker->file($sourceDir = '/tmp', $targetDir = '/tmp'),
-            'skill_id'=> $this->faker->word(),
-            'language_id'=> $this->faker->word(),
-            'remember_token' => Str::random(10),
-            "job_title_id" => Jobtitle::factory(),
+            'Country'=> $this->faker->country(),
+            'biography' => $this->faker->paragraphs(1, true),
+            'profileimg'=> $this->faker->word(),
+            'skill_id'=>  $this->faker->randomDigit(),
+            'language_id'=>  $this->faker->randomDigit(),       
+            'user_id' =>  $this->faker->randomDigit()
         ];
     }
 }

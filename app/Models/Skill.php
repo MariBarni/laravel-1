@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     use HasFactory;
-    public function profile():BelongsTo
+    public function profiles():HasMany
     {
-        return $this->belongsTo(Profile::class);
+        return $this->hasMany(Profiles::class);
     }
 }

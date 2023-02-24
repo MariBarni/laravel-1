@@ -20,13 +20,14 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->date('birthday')->nullable();
             $table->string('address')->nullable();
-            $table->integer('plz')->nullable();
+            $table->string('plz')->nullable();
             $table->string('City')->nullable();
             $table->string('Country')->nullable();
             $table->longText('biography')->nullable();
             $table->string('profileimg')->nullable();           
-            $table->foreignId('skill_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('language_id')->constrained()->cascadeOnDelete();       
+            $table->foreignId('skill_id');
+            $table->foreignId('language_id');     
+            $table->foreignId('user_id');  
             $table->timestamps();
         });
     }
