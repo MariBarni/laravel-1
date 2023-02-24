@@ -1,6 +1,8 @@
 <?php
 
 namespace Database\Factories;
+use App\Models\Profile;
+use App\Models\Institution;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
