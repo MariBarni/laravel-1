@@ -29,10 +29,12 @@ class ExperienceFactory extends Factory
             'finished_at' => $current?null: now()->addMonths(
                 $this->faker->numberBetween(3,12)
             ),
-            
-            'job_title_id' =>  $this->faker->randomDigit(), 
-            'company_id' =>  $this->faker->randomDigit(), 
-            'profile_id' =>  $this->faker->randomDigit() 
+            'profile_id' => Profile::factory(),
+            'job_title_id' => JobTitle::factory(),
+            'company_id' => Company::factory()
+            //'job_title_id' =>  $this->faker->randomDigit(), 
+           // 'company_id' =>  $this->faker->randomDigit(), 
+            //'profile_id' =>  $this->faker->randomDigit() 
            
         ];
     }

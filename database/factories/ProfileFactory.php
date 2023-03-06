@@ -32,9 +32,10 @@ class ProfileFactory extends Factory
             'Country'=> $this->faker->country(),
             'biography' => $this->faker->paragraphs(1, true),
             'profileimg'=> $this->faker->word(),
-            'skill_id'=>  $this->faker->randomDigit(),
-            'language_id'=>  $this->faker->randomDigit(),       
+            'skill_id'=>  Skill::factory(),
+            'language_id'=> Language::factory(),       
             'user_id' =>  $this->faker->randomDigit()
+            
         ];
     }
 }

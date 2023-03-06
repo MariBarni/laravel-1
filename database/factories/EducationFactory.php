@@ -29,9 +29,9 @@ class EducationFactory extends Factory
                 $this->faker->numberBetween(3,12)
             ),
             'sort'=>  $this->faker->randomDigit(),
-            'institution_id' =>  $this->faker->randomDigit(),  
-            'profile_id' =>  $this->faker->randomDigit()  
-            
+            'institution_id' => Institution::factory(),  
+            'profile_id' => Profile::factory()
+                       
         ];
     }
 }
