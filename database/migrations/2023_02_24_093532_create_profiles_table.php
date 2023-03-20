@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name');
-            $table->foreignID('jobtitle_id'); 
+            $table->string('wjobtitle');
             $table->string('email')->unique()->nullable();
             $table->string('phone')->nullable();
-            $table->date('birthday')->nullable();
+            $table->string('birthday')->nullable();
             $table->string('address')->nullable();
             $table->string('plz')->nullable();
             $table->string('City')->nullable();

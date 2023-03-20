@@ -12,4 +12,5 @@ class JobTitle extends Model
 {
     return $this->hasMany(Experience::class);
 }
+
 }

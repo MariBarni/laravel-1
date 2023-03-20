@@ -28,10 +28,11 @@
     </head>
 
     <body class="antialiased">
-        @include('layouts.navigation')
-       
-        
+
+           
+     
         <livewire:profile-form>
+         
         @yield('content')
 
         @livewire('notifications')

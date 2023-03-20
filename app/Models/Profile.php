@@ -29,5 +29,7 @@ class Profile extends Model
     {
         return $this->hasMany(Link::class);
     }
+    
+  
 }
 

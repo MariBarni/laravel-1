@@ -22,7 +22,7 @@ class ProfileFactory extends Factory
         return [            
             'name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(), 
-            "jobtitle_id" =>  $this->faker->randomDigit(),
+            "wjobtitle" =>  $this->faker->lastName(),
             'email'=> $this->faker->email(),
             'phone'=> $this->faker->phoneNumber(),
             'birthday'=> $this->faker->date($format = 'Y-m-d', $max = 'now'),
