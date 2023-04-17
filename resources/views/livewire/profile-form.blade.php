@@ -3,9 +3,7 @@
 <form wire:submit.prevent="submit">
     {{ $this->form }}
  
-    <button type="submit" class="w-full rounded-md mt-2 py-3">
-        Submit
-    </button>
+ 
 </form>
 </div>
 </div>

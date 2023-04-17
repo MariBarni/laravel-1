@@ -12,15 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('education', function (Blueprint $table) {
-            $table->id();            
-            $table->text('field_of_study');
-            $table->text('degree');
-            $table-> boolean('current')->default(false);
+            $table->id();    
+            $table->string('Abschluss');            
+            $table->string('Bildungseinrichtung');
+            $table->string('Fachrichtung');
+            $table->string('OrtH');
+            $table-> boolean('currentE')->default(false);
             $table->date('started_at');
             $table->date('finished_at')->nullable();
             $table->integer('sort')->nullable();
-            $table->foreignId('institution_id');
-            $table->foreignId('profile_id');
+            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();             
             $table->timestamps();
         });
     }

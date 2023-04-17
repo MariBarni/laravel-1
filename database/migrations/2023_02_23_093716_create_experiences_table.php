@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
+            $table->string('JName');
+            $table->string('CNname');
             $table->text('description');
-            $table-> boolean('current')->default(false);
+            $table-> boolean('currentJ')->default(false);
             $table->date('started_at');
             $table->date('finished_at')->nullable();
-            $table->integer('sort')->nullable();
-            $table->foreignId('job_title_id');
-            $table->foreignId('company_id');
-            $table->foreignId('profile_id');
+            $table->integer('sort')->nullable();          
+            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();   
             $table->timestamps();
         });
     }

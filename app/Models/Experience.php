@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Experience extends Model
 {
@@ -13,13 +14,5 @@ class Experience extends Model
         return $this->belongsTo(Profile::class);
     }
 
-    public function jobTitle():BelongsTo
-    {
-        return $this->belongsTo(Jobtitle::class);
-    }
-
-    public function company():BelongsTo
-    {
-        return $this->belongsTo(Company::class);
-    }
+    
 }
