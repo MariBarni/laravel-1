@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('languages', function (Blueprint $table) {
             $table->id();
-            $table->string('language');
-            $table->string('level');
-            $table->foreignId('profile_id')->constrained()->cascadeOnDelete();            
+           
+            $table->string('language')->nullable();
+            $table->string('level')->nullable();
+            $table->foreignId('profile_id');            
             $table->timestamps();
         });
     }

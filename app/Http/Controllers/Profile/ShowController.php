@@ -14,9 +14,7 @@ class ShowController extends Controller
     public function __invoke(Request $request): Response
     {
         //
-        return view('profile.show',[
-            'profile' => user()->profile
-        ]);
+        return view('profile.show');
         //$profile = Profile::all();
   
        // return view('profile.show',compact('profiles'));

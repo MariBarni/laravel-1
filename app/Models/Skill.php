@@ -10,9 +10,15 @@ class Skill extends Model
 {
     
     use HasFactory;
+    
+    public $table = 'skills';
 
-    protected $filable=[
+    protected $fillable=[
+        'id',
         'skill'     
+    ];
+    protected $casts = [
+        'tags' => 'array',
     ];
 
     public function profile():BelongsTo

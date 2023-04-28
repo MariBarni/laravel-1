@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,7 +9,11 @@ class Experience extends Model
 {
     use HasFactory;
 
-    protected $filable=[
+    public $table = 'experiences';
+    
+
+    protected $fillable=[
+        'id',
         'jname',
         'cnname',
         'description',
@@ -18,6 +21,11 @@ class Experience extends Model
         'started_at',
         'finished_at',
         'sort' 
+    ];
+    protected $casts = [
+        'currentj' => 'boolean',
+        'started_at' => 'date',
+        'finished_at' => 'date',
     ];
       
 

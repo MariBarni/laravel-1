@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('profile');
 });
-Route::prefix('profile')->as('profile.')->group(function () {
-    Route::get('/',\App\Http\Controllers\Profile\ShowController::class)->name('show');
 
-});
 Route::view('/resume','resume')->name('resume');
+//Route::get('/resume?{id}', [ResumeController::class, 'show'])->name('resume');
+//Route::get('/resume/download','ResumeController@download')->name('resume.download');
+
+Route::get('/resume/{id}', [ResumeController::class, 'show']);
+Route::get('resume/', [ResumeController::class, 'show']);
+

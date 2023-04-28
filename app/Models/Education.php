@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,8 +8,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Education extends Model
 {
     use HasFactory;
-
-    protected $filable=[
+    public $table = 'educations';
+ 
+    protected $fillable=[
+        'id',
         'abschluss',  
         'bildungseinrichtung',
         'fachrichtung',
@@ -19,6 +20,11 @@ class Education extends Model
         'started_at',
         'finished_at',
         'sort'
+    ];
+    protected $casts = [
+        'currente' => 'boolean',
+        'started_at' => 'date',
+        'finished_at' => 'date',
     ];
 
    

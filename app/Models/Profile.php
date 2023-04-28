@@ -9,11 +9,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Profile extends Model
 {
     use HasFactory;
-    protected $filable=[
+
+    public $table = 'profiles';
+  
+   
+    protected $fillable=[
+        'id',
         'name',
         'vorname',
         'wunschposition',
-       'e-mail',
+       'email',
        'handynummer',
         'geburtstag',
         'geburtsort',
@@ -22,14 +27,23 @@ class Profile extends Model
         'ort',
         'land',
        'profileimg',
-       'token',
-       'template'
+       'templa',
+       'tags'
     ];
     
+    protected $casts = [
+        'tags' => 'array',
+        'experiences' => 'array',
+        'educations' => 'array',
+        //'languages' => 'array',
+        'skills'=> 'array'
+    ];
+  
+ 
      
    
 
-    public function experiences(): HasMany
+    public function experiences():HasMany
     {
         return $this->hasMany(Experience::class);
     }
@@ -39,14 +53,16 @@ class Profile extends Model
     {
         return $this->hasMany(Education::class);
     }
-    public function skills():HasMany
-    {
-        return $this->hasMany(Skill::class);
-    }
+ 
     public function languages():HasMany
     {
         return $this->hasMany(Language::class);
     }
+    public function skills():HasMany
+    {
+        return $this->hasMany(Skill::class);
+    }
+
  
     
   

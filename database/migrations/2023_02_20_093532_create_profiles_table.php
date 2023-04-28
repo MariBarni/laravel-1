@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profiles', function (Blueprint $table) {
-            $table->id();
+            $table->id();           
             $table->string('name');
             $table->string('vorname');
-            $table->string('wunschposition');
-            $table->string('e-mail')->unique()->nullable();
+            $table->string('wunschposition')->nullable();
+            $table->string('email')->unique()->nullable();
             $table->string('handynummer')->nullable();
             $table->string('geburtstag')->nullable();
             $table->string('geburtsort')->nullable();
@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('plz')->nullable();
             $table->string('ort')->nullable();
             $table->string('land')->nullable();
-            $table->string('profileimg')->nullable();     
-            $table->string('token')->nullable(); 
-            $table->string('template')->nullable(); 
+            $table->string('profileimg')->nullable();                
+            $table->string('templa')->nullable(); 
+            $table->string('tags')->nullable(); 
             $table->timestamps();
         });
     }

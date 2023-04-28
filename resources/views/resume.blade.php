@@ -34,129 +34,128 @@
         <div x-data="{ open: false }"
             class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
             <div class="p-4 flex flex-row items-center justify-between">
-                <a href="#"
-                    class="text-lg font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">example
-                    profile</a>
-                <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                        <path x-show="!open" fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                        <path x-show="open" fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+            
+            
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}"
-                class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-                <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open"
-                        class="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent hover:bg-blue-800 md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
-                        <span>Jane Doe</span>
-                        <img class="inline h-6 rounded-full"
-                            src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4">
-                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
-                            class="inline w-4 h-4 transition-transform duration-200 transform">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div x-show="open" x-transition:enter="transition ease-out duration-100"
-                        x-transition:enter-start="transform opacity-0 scale-95"
-                        x-transition:enter-end="transform opacity-100 scale-100"
-                        x-transition:leave="transition ease-in duration-75"
-                        x-transition:leave-start="transform opacity-100 scale-100"
-                        x-transition:leave-end="transform opacity-0 scale-95"
-                        class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                        <div class="py-2 bg-white text-blue-800 text-sm rounded-sm border border-main-color shadow-sm">
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Settings</a>
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Help</a>
-                            <div class="border-b"></div>
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
+            
         </div>
     </div>
-    <!-- End of Navbar -->
+  
 
     <div class="container mx-auto my-5 p-5">
         <div class="md:flex no-wrap md:-mx-2 ">
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
                 <!-- Profile Card -->
-                <div class="bg-white p-3 border-t-4 border-green-400">
+                <div class="bg-white p-3 border-t-4 border-blue-400">
                     <div class="image overflow-hidden">
                         <img class="h-auto w-full mx-auto"
                         src="{{ Vite::asset('resources/images/portrait-dummy-frau-300x300.jpg') }}">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
-                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
-                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
-                        consectetur adipisicing elit.
-                        Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
-                    <ul
-                        class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                        <li class="flex items-center py-3">
-                            <span>Status</span>
-                            <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
-                        </li>
-                        <li class="flex items-center py-3">
-                            <span>Member since</span>
-                            <span class="ml-auto">Nov 07, 2016</span>
-                        </li>
-                    </ul>
+                    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                        <span>Persönliches</span>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859m-19.5.338V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H6.911a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661z" />
+</svg>
+</span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> {{$profile->email}}</h3></span>
+                    </div>
+
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+</svg>
+
+</span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> {{$profile->handynummer}}</h3></span>
+                    </div>
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+</svg>
+
+
+</span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> {{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</h3></span>
+                    </div>   
+
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8.25v-1.5m0 1.5c-1.355 0-2.697.056-4.024.166C6.845 8.51 6 9.473 6 10.608v2.513m6-4.87c1.355 0 2.697.055 4.024.165C17.155 8.51 18 9.473 18 10.608v2.513m-3-4.87v-1.5m-6 1.5v-1.5m12 9.75l-1.5.75a3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0 3.354 3.354 0 00-3 0 3.354 3.354 0 01-3 0L3 16.5m15-3.38a48.474 48.474 0 00-6-.37c-2.032 0-4.034.125-6 .37m12 0c.39.049.777.102 1.163.16 1.07.16 1.837 1.094 1.837 2.175v5.17c0 .62-.504 1.124-1.125 1.124H4.125A1.125 1.125 0 013 20.625v-5.17c0-1.08.768-2.014 1.837-2.174A47.78 47.78 0 016 13.12M12.265 3.11a.375.375 0 11-.53 0L12 2.845l.265.265zm-3 0a.375.375 0 11-.53 0L9 2.845l.265.265zm6 0a.375.375 0 11-.53 0L15 2.845l.265.265z" />
+</svg>
+</span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> {{$profile->geburtstag}}</h3></span>
+                    </div>   
+
+                                       
                 </div>
                 <!-- End of profile card -->
                 <div class="my-4"></div>
-                <!-- Friends card -->
+                <!-- Skills card -->
                 <div class="bg-white p-3 hover:shadow">
                     <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
-                        <span class="text-green-500">
-                            <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                            </svg>
-                        </span>
-                        <span>Similar Profiles</span>
+                        <span>Fähigkeiten</span>
                     </div>
-                    <div class="grid grid-cols-3">
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
-                                alt="">
-                            <a href="#" class="text-main-color">Kojstantin</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
-                                alt="">
-                            <a href="#" class="text-main-color">James</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                                alt="">
-                            <a href="#" class="text-main-color">Natie</a>
-                        </div>
-                        <div class="text-center my-2">
-                            <img class="h-16 w-16 rounded-full mx-auto"
-                                src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
-                                alt="">
-                            <a href="#" class="text-main-color">Casey</a>
-                        </div>
+
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500"> </span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> 
+                        <ul>
+
+                        @foreach($profile->tags as $e)
+
+                        <li> {{$e}}</li>
+
+                        @endforeach
+                        </ul>
+                        </h3>
+                    </span>
                     </div>
+                
+
+
+                        
+                    
                 </div>
-                <!-- End of friends card -->
+                <!-- End of Skills card -->
+                 <!-- Languages card -->
+                 <div class="bg-white p-3 hover:shadow">
+                    <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                        <span>Sprachen</span>
+                    </div>
+
+                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                <span clas="text-green-500"> </span>
+                                <span ><h3 class="text-gray-600 font-lg text-semibold leading-6"> 
+                        <ul>
+                        @foreach($profile->languages as $lan)
+                       
+                        <li>
+                    {{$lan->language}}  {{$lan->level}}                   
+                    </li>
+                    @endforeach
+                    
+                        </ul>
+                        </h3>
+                    </span>
+                  
+                    </div>
+                
+
+
+                        
+                    
+                </div>
+                <!-- End of Languages card -->
             </div>
+
             <!-- Right Side -->
             <div class="w-full md:w-9/12 mx-2 h-64">
                 <!-- Profile tab -->
@@ -175,17 +174,14 @@
                     <div class="text-gray-700">
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">First Name</div>
-                                <div class="px-4 py-2">Jane</div>
+                                <div class="px-4 py-2 font-semibold">Vorname</div>
+                                <div class="px-4 py-2">{{$profile->vorname}} </div>
                             </div>
                             <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Last Name</div>
-                                <div class="px-4 py-2">Doe</div>
+                                <div class="px-4 py-2 font-semibold">Name</div>
+                                <div class="px-4 py-2">{{$profile->name}}</div>
                             </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Gender</div>
-                                <div class="px-4 py-2">Female</div>
-                            </div>
+                           
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Contact No.</div>
                                 <div class="px-4 py-2">+11 998001001</div>
