@@ -9,18 +9,31 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Profile extends Model
 {
     use HasFactory;
+    protected $filable=[
+        'name',
+        'vorname',
+        'wunschposition',
+       'e-mail',
+       'handynummer',
+        'geburtstag',
+        'geburtsort',
+        'straße',
+        'plz',
+        'ort',
+        'land',
+       'profileimg',
+       'token',
+       'template'
+    ];
     
-
+     
    
 
     public function experiences(): HasMany
     {
         return $this->hasMany(Experience::class);
     }
-    public function links(): HasMany
-    {
-        return $this->hasMany(Link::class);
-    }
+
  
     public function educations():HasMany
     {

@@ -10,6 +10,11 @@ class Skill extends Model
 {
     
     use HasFactory;
+
+    protected $filable=[
+        'skill'     
+    ];
+
     public function profile():BelongsTo
     {
         return $this->belongsTo(Profile::class);

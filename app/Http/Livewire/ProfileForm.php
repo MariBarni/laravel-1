@@ -81,17 +81,17 @@ class ProfileForm extends Component implements HasForms
                 
                    Forms\Components\Wizard\Step::make('Profile')->label(label:'Persönliche Daten')->icon(icon:'heroicon-o-user')
                     ->schema([           
-                        Forms\Components\TextInput::make('Name')->minLength(2)->maxLength(255)->required(),            
-                        Forms\Components\TextInput::make('Vorname')->minLength(2)->maxLength(255)->required(),                
-                        Forms\Components\TextInput::make(name:'Wunschposition')->label(label:'Wunschposition')->minLength(2)->maxLength(255)->columnSpan('full'),                  
-                        Forms\Components\TextInput::make(name:'E-Mail')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
-                        Forms\Components\TextInput::make('Handynummer')->tel(),                
-                        Forms\Components\DatePicker::make(name:'Geburtstag')->label(label:'Geburtstag')->displayFormat('d/m/Y')->minDate(now()->subYears(120))->maxDate(now()),    
-                        Forms\Components\TextInput::make('Geburtsort')->minLength(2)->maxLength(255),            
-                        Forms\Components\TextInput::make('Straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
-                        Forms\Components\TextInput::make(name:'PLZ')->label(label:'PLZ')->required(),            
-                        Forms\Components\TextInput::make(name:'Ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
-                        Forms\Components\TextInput::make(name:'Land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
+                        Forms\Components\TextInput::make('name')->minLength(2)->maxLength(255)->required(),            
+                        Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),                
+                        Forms\Components\TextInput::make(name:'wunschposition')->label(label:'Wunschposition')->minLength(2)->maxLength(255)->columnSpan('full'),                  
+                        Forms\Components\TextInput::make(name:'e-mail')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
+                        Forms\Components\TextInput::make('handynummer')->tel(),                
+                        Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d/m/Y')->minDate(now()->subYears(120))->maxDate(now()),    
+                        Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
+                        Forms\Components\TextInput::make('straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
+                        Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->required(),            
+                        Forms\Components\TextInput::make(name:'ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
+                        Forms\Components\TextInput::make(name:'land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
                         FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(),
                     ]),
                     
@@ -99,11 +99,11 @@ class ProfileForm extends Component implements HasForms
                     ->schema([
                         Repeater::make(name:'experiences')->label(label:'')->relationship('experiences')
                     ->schema([
-                    TextInput::make(name:'JName')->label(label:'Positionsbezeichnung')->minLength(2)->maxLength(255)->required(),
-                    TextInput::make(name:'CName')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
+                    TextInput::make(name:'jname')->label(label:'Positionsbezeichnung')->minLength(2)->maxLength(255)->required(),
+                    TextInput::make(name:'cname')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
                     Textarea::make(name:'description')->label(label:'Beschreibung')->rows(3)
                     ->cols(20)->columnSpan(2),
-                    Checkbox::make(name:'currentJ')->label(label:'Bis heute')
+                    Checkbox::make(name:'currentj')->label(label:'Bis heute')
                         ->afterStateUpdated(function (Closure $set, $state) {
                             $set('finished_at', null);
                         })
@@ -112,7 +112,7 @@ class ProfileForm extends Component implements HasForms
                     DatePicker::make(name:'started_at')->label(label:'Von')
                         ->required()->columns(2) ->columnSpan(2),
                     DatePicker::make(name:'finished_at')->label(label:'Bis')
-                        ->hidden(fn ($get) => $get('currentJ'))
+                        ->hidden(fn ($get) => $get('currentj'))
                         ->nullable()
                         ->withoutTime()->columns(2) ->columnSpan(2),
                     ])
@@ -124,11 +124,11 @@ class ProfileForm extends Component implements HasForms
                         Repeater::make(name:'educations')->label(label:'')
                         ->schema([
                             
-                            TextInput::make(name:'Abschluss')->label(label:'Abschluss')->minLength(2)->maxLength(255)->required()->placeholder('z. B. Mittlere Reife oder Abitur'),
-                            TextInput::make(name:'Bildungseinrichtung')->label(label:'Bildungseinrichtung')->minLength(2)->maxLength(255)->required()->placeholder('Name der Schule'),
-                            TextInput::make(name:'Fachrichtung')->label(label:'Fachrichtung')->minLength(2)->maxLength(255),
-                            TextInput::make(name:'OrtH')->label(label:'Ort')->minLength(2)->maxLength(255)->required(),                            
-                            Checkbox::make(name:'currentE')->label(label:'Bis heute')
+                            TextInput::make(name:'abschluss')->label(label:'Abschluss')->minLength(2)->maxLength(255)->required()->placeholder('z. B. Mittlere Reife oder Abitur'),
+                            TextInput::make(name:'bildungseinrichtung')->label(label:'Bildungseinrichtung')->minLength(2)->maxLength(255)->required()->placeholder('Name der Schule'),
+                            TextInput::make(name:'fachrichtung')->label(label:'Fachrichtung')->minLength(2)->maxLength(255),
+                            TextInput::make(name:'orth')->label(label:'Ort')->minLength(2)->maxLength(255)->required(),                            
+                            Checkbox::make(name:'currente')->label(label:'Bis heute')
                                 ->afterStateUpdated(function (Closure $set, $state) {
                                     $set('finished_at', null);
                                 })
@@ -137,7 +137,7 @@ class ProfileForm extends Component implements HasForms
                             DatePicker::make(name:'started_at')->label(label:'Von')
                                 ->required()->columns(2) ->columnSpan(2),
                             DatePicker::make(name:'finished_at')->label(label:'Bis')
-                                ->hidden(fn ($get) => $get('currentE'))
+                                ->hidden(fn ($get) => $get('currente'))
                                 ->nullable()
                                 ->withoutTime()->columns(2) ->columnSpan(2),
                         ])

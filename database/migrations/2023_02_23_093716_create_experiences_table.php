@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('JName');
-            $table->string('CNname');
+            $table->string('jname');
+            $table->string('cnname');
             $table->text('description');
-            $table-> boolean('currentJ')->default(false);
+            $table-> boolean('currentj')->default(false);
             $table->date('started_at');
             $table->date('finished_at')->nullable();
             $table->integer('sort')->nullable();          

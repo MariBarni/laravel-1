@@ -9,6 +9,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Education extends Model
 {
     use HasFactory;
+
+    protected $filable=[
+        'abschluss',  
+        'bildungseinrichtung',
+        'fachrichtung',
+        'orth',
+        'currente',
+        'started_at',
+        'finished_at',
+        'sort'
+    ];
+
+   
     public function profile():BelongsTo
     {
         return $this->belongsTo(Profile::class);

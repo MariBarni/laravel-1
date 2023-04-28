@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('Name');
-            $table->string('Vorname');
-            $table->string('Wunschposition');
-            $table->string('E-Mail')->unique()->nullable();
-            $table->string('Handynummer')->nullable();
-            $table->string('Geburtstag')->nullable();
-            $table->string('Geburtsort')->nullable();
-            $table->string('Straße')->nullable();
-            $table->string('PLZ')->nullable();
-            $table->string('Ort')->nullable();
-            $table->string('Land')->nullable();
-            $table->string('profileimg')->nullable();       
+            $table->string('name');
+            $table->string('vorname');
+            $table->string('wunschposition');
+            $table->string('e-mail')->unique()->nullable();
+            $table->string('handynummer')->nullable();
+            $table->string('geburtstag')->nullable();
+            $table->string('geburtsort')->nullable();
+            $table->string('straße')->nullable();
+            $table->string('plz')->nullable();
+            $table->string('ort')->nullable();
+            $table->string('land')->nullable();
+            $table->string('profileimg')->nullable();     
+            $table->string('token')->nullable(); 
+            $table->string('template')->nullable(); 
             $table->timestamps();
         });
     }

@@ -9,6 +9,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Experience extends Model
 {
     use HasFactory;
+
+    protected $filable=[
+        'jname',
+        'cnname',
+        'description',
+        'currentj',
+        'started_at',
+        'finished_at',
+        'sort' 
+    ];
+      
+
+       
     public function profile():BelongsTo
     {
         return $this->belongsTo(Profile::class);

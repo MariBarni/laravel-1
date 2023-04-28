@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('education', function (Blueprint $table) {
             $table->id();    
-            $table->string('Abschluss');            
-            $table->string('Bildungseinrichtung');
-            $table->string('Fachrichtung');
-            $table->string('OrtH');
-            $table-> boolean('currentE')->default(false);
+            $table->string('abschluss');            
+            $table->string('bildungseinrichtung');
+            $table->string('fachrichtung');
+            $table->string('orth');
+            $table-> boolean('currente')->default(false);
             $table->date('started_at');
             $table->date('finished_at')->nullable();
             $table->integer('sort')->nullable();
