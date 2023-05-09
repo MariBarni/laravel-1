@@ -33,8 +33,8 @@ class Profile extends Model
     
     protected $casts = [
         'tags' => 'array',
-        'experiences' => 'array',
-        'educations' => 'array',
+        //'experiences' => 'array',
+        //'educations' => 'array',
         //'languages' => 'array',
         'skills'=> 'array'
     ];

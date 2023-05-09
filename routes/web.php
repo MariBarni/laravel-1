@@ -20,8 +20,17 @@ Route::get('/', function () {
 
 Route::view('/resume','resume')->name('resume');
 //Route::get('/resume?{id}', [ResumeController::class, 'show'])->name('resume');
-//Route::get('/resume/download','ResumeController@download')->name('resume.download');
+//Route::get('/resume/download/{id}','App\Http\Controllers\ResumeController@download')->name('resume.download');
 
-Route::get('/resume/{id}', [ResumeController::class, 'show']);
+Route::get('/resume/{id}', [ResumeController::class, 'show'])->name('resume.show');
 Route::get('resume/', [ResumeController::class, 'show']);
+//Route::get('/resume/{id}', 'App\Http\Controllers\ResumeController@show')->name('resume.show');
+//Route::get('resume/', 'App\Http\Controllers\ResumeController@show');
 
+
+Route::get('/test', function () {
+    return view('test');
+});
+
+Route::view('/test', 'test');
+//Route::get('/blog/{id}', function ($id) { return view('modale.blade', compact('id') ); });

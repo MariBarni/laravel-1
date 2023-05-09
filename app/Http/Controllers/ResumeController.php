@@ -15,19 +15,31 @@ class ResumeController extends Controller
         return view('resume');
        // return view('resume-ref', compact('user'));
         // return view('resume2', compact('user'));
-    }*/
-
-   /* public function download()
+    }
+    public function download()
     {
         $user = auth()->user();
 
         $pdf = \PDF::loadView('resume-ref', compact('user'));
         return $pdf->download('resume.pdf');
-    }*/
+    }
+    
+    */
+
+   public function download($id)
+    {
+        $profile = Profile::findOrFail($id);
+
+        $pdf = \PDF::loadView('vorschau', $profile);
+        return $pdf->download('resume.pdf');
+    }
+
     public function show($id)
     {
         $profile = Profile::findOrFail($id);
+        
         return view('resume')->with('profile', $profile);
+
     }
 
     

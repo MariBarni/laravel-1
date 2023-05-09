@@ -21,21 +21,26 @@
 
         <style>[x-cloak] { display: none !important; }</style>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+        <!-- Alpine v3 -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<!-- Focus plugin -->
+<script defer src="https://unpkg.com/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
      
         @livewireStyles
         @livewireScripts
         @stack('scripts')
     </head>
 
-    <body class="antialiased">           
+    <body class="antialiased">
+
+           
      
-        <livewire:profile-form>
+        <livewire:profile-view>
          
         @yield('content')
 
         @livewire('notifications')
         @livewire('livewire-ui-modal')
-       
     </body>
 </html>

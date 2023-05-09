@@ -73,7 +73,7 @@ class ProfileForm extends Component implements HasForms
      /* Education Variables*/
      public null|array $languages=[];
 
-       
+     public $currentStepF = 1;
  
      public function mount(): void
      {
@@ -118,12 +118,12 @@ class ProfileForm extends Component implements HasForms
                          FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(),
                         ]),
                      
-                     Forms\Components\Wizard\Step::make('experiencetab')->label(label:'Beruferfahrung')->icon(icon:'heroicon-o-briefcase')
+                     Forms\Components\Wizard\Step::make('experiencetab')->label(label:'Berufserfahrung')->icon(icon:'heroicon-o-briefcase')
                      ->schema([
                          Repeater::make(name:'experiences')->label(label:'')
                         ->schema([
                             Forms\Components\TextInput::make(name:'jname')->label(label:'Positionsbezeichnung')->minLength(2)->maxLength(255)->required(),
-                            Forms\Components\TextInput::make(name:'cname')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
+                            Forms\Components\TextInput::make(name:'cnname')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
                             Forms\Components\Textarea::make(name:'description')->label(label:'Beschreibung')->rows(3)
                                 ->cols(20)->columnSpan(2),
                             Forms\Components\Checkbox::make(name:'currentj')->label(label:'Bis heute')
@@ -198,7 +198,7 @@ class ProfileForm extends Component implements HasForms
                      
                      ])->columns(2) ->columnSpan(2),
                      
-                 ])->columns(2) ->columnSpan(2)->submitAction(new HtmlString('<button type="submit">Submit</button>'))
+                 ])->columns(2) ->columnSpan(2)->submitAction(new HtmlString('<button   class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700" type="submit">Submit</button>'))
                  
                  ])->columns(2)->collapsed(),              
 
@@ -229,9 +229,7 @@ class ProfileForm extends Component implements HasForms
         //return redirect()->route('resume', [$profile]);
        
         //return redirect()->route('resume', [$id]);
-        return redirect()->action(
-            [ResumeController::class, 'show'], ['id' => $id]
-        );
+        return redirect()->route('resume.show', ['id' => $id]);
       
         
        
