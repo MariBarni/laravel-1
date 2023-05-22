@@ -218,7 +218,7 @@ hr {
     <div class="w3-third">
     
       <div class="w3-sand w3-text-grey w3-card-4">
-            <div class="w3-display-container">
+      <div class="w3-display-container">
             <img src="{{ asset('storage/'.$profile->profileimg) }}" >
             
                
@@ -229,20 +229,20 @@ hr {
                 </div>
             </div>
             <div class="w3-container">
-                <p><i class="fa fa-briefcase w3-margin-right w3-large w3-text-teal"></i>{{$profile->wunschposition}}</p>
-                <p><i class=" fa fa-home w3-margin-right w3-large w3-text-teal"></i> {{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</p>
-                <p><i class=" fa fa-envelope-o w3-margin-right w3-large w3-text-teal"></i> {{$profile->email}}</p>
-                <p><i class="fa fa-phone w3-margin-right w3-large w3-text-teal"></i>{{$profile->handynummer}}</p>
-                <p><i class=" fa fa-birthday-cake w3-margin-right w3-large w3-text-teal"></i>{{$profile->geburtstag}}</p>
+                <p><i class="fa fa-briefcase w3-margin-right w3-large w3-text-black"></i>{{$profile->wunschposition}}</p>
+                <p><i class=" fa fa-home w3-margin-right w3-large w3-text-black"></i> {{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</p>
+                <p><i class=" fa fa-envelope-o w3-margin-right w3-large w3-text-black"></i> {{$profile->email}}</p>
+                <p><i class="fa fa-phone w3-margin-right w3-large w3-text-black"></i>{{$profile->handynummer}}</p>
+                <p><i class=" fa fa-birthday-cake w3-margin-right w3-large w3-text-black"></i>{{$profile->geburtstag}}</p>
                 <hr>
 
-                <p class="w3-large"><b><i class="fa fa-star-o  w3-margin-right w3-text-teal"></i>Fähigkeiten</b></p>
+                <p class="w3-large"><b><i class="fa fa-star-o  w3-margin-right w3-text-black"></i>Fähigkeiten</b></p>
                 @foreach($profile->tags as $e)
                 <p> {{$e}} </p>
                 @endforeach                   
                 <br>
                 <hr>
-                <p class="w3-large "><b><i class="fa fa-globe w3-margin-right w3-text-teal"></i>Sprachen</b></p>
+                <p class="w3-large "><b><i class="fa fa-globe w3-margin-right w3-text-black"></i>Sprachen</b></p>
                 @foreach($profile->languages as $lan)                        
                 <p>{{$lan->language}}  {{$lan->level}} </p>
                 @endforeach         
@@ -259,12 +259,12 @@ hr {
     <!-- Beruferfahrungen .- kann leer Sein -->
     @if (count($profile->experiences) > 0)
       <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <h2 class="w3-text-grey "><i class="fa fa-suitcase w3-margin-right w3-xxlarge w3-text-teal">
+            <h2 class="w3-text-grey w3-sand "><i class="fa fa-suitcase w3-margin-right w3-xxlarge w3-text-black ">
 </i>Beruferfahrungen</h2>
             @foreach ($profile->experiences as $exp)
             <div class="w3-container">
                 <h5 class="w3-opacity"><b>{{$exp->jname}} / {{$exp->cnname}}</b></h5>
-                <h6 class="w3-text-teal"><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - {{ $exp->finished_at?->format('d/m/Y') }}  </h6>
+                <h6 class="w3-text-grey "><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - {{ $exp->finished_at?->format('d/m/Y') }}  </h6>
                 <p>{{$exp->description}}</p>
                 <hr>
             </div>
@@ -276,11 +276,11 @@ hr {
      <!-- End of Beruferfahrungen --> 
     <!-- Bildungsweg  -->   
       <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-graduation-cap w3-margin-right w3-xxlarge w3-text-teal"></i>Bildungsweg</h2>
+        <h2 class="w3-text-grey w3-padding-16 w3-sand"><i class="fa fa-graduation-cap w3-margin-right w3-xxlarge w3-text-black "></i>Bildungsweg</h2>
         @foreach ($profile->educations as $edu)
         <div class="w3-container">
           <h5 class="w3-opacity"><b>{{$edu->abschluss}} / {{$edu->bildungseinrichtung}} </b></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - {{ $edu->finished_at?->format('d/m/Y') }}</h6>
+          <h6 class="w3-text-grey "><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - {{ $edu->finished_at?->format('d/m/Y') }}</h6>
           <p>{{$edu->fachrichtung}}</br>{{$edu->orth}}</p>
           <hr>
         </div>
