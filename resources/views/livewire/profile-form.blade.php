@@ -4,7 +4,7 @@
         {{ $this->form }}     
         </form>
         {{-- STEP 1 --}}
-        @if ($currentStepF == 1)
+        @if ($currentStep == 1)
        
         </br>
         <div class="grid grid-cols-1      filament-forms-component-container gap-6">
@@ -32,9 +32,8 @@
             </div>
         </div>
         @endif
-
-            {{-- STEP 2 --}}
-            @if ($currentStepF == 2)
+        {{-- STEP 2 --}}
+        @if ($currentStep == 2)
        
          
          <div class="grid grid-cols-1      filament-forms-component-container gap-6">
@@ -109,28 +108,28 @@
                          
                 <div class="mb-5">
 
-<a   
-class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700" 
-href="{{ route('resume.show',33)}}" >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-        </svg>
-        <span>vorschau</span>
-</a>
-     
-</div>     
+                    <a   
+                    class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700" 
+                    href="{{ route('resume.show',['id' => $id])}}" >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                            <span>vorschau</span>
+                    </a>
+                        
+                    </div>     
 
-<div class="mb-5">
+                    <div class="mb-5">
 
-<a
-    class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700"
-            href="{{ route('resume.download',33)}}" >
-                <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                <span>herunterladen</span>
-</a> 
+                    <a
+                        class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 font-medium rounded-lg border transition-colors outline-none focus:ring-offset-2 focus:ring-2 focus:ring-inset min-h-[2rem] px-3 text-sm text-white shadow focus:ring-white border-transparent bg-primary-600 hover:bg-primary-500 focus:bg-primary-700 focus:ring-offset-primary-700"
+                                href="{{ route('resume.download',['id' => $id])}}" >
+                                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
+                                    <span>herunterladen</span>
+                    </a> 
 
 
-</div>   
+                    </div>   
 
                     </div>
                 </div>
@@ -140,6 +139,8 @@ href="{{ route('resume.show',33)}}" >
         </div>
 
         @endif
- 
+           
+      
+        
     </div>
 </div>

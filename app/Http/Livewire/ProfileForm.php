@@ -73,10 +73,12 @@ class ProfileForm extends Component implements HasForms
      /* Education Variables*/
      public null|array $languages=[];
 
-     public $currentStepF = 1;
+     public $currentStep = 1;
+
  
      public function mount(): void
      {
+        $currentStep = 1;
         $this->form->fill();
         
      }
@@ -90,9 +92,9 @@ class ProfileForm extends Component implements HasForms
              ->schema([
                  Radio::make(name:'templa')->label(label:'')
                     ->options([
-                        'd1' => 'Design 1',
-                        'd2' => 'Design 2',
-                        'd3' => 'Design 3'
+                        'resume' => 'Design 1',
+                        'resume2' => 'Design 2',
+                        'resume3' => 'Design 3'
                     ])->inline(),
              ])->columns(2)->collapsible(),
 
@@ -226,14 +228,14 @@ class ProfileForm extends Component implements HasForms
         $this->form->model($profile)->saveRelationships(); 
         
         $id = $profile->id;
+        $templa =$profile->templa;
+        $currentStep = 2;       
+       
         //return redirect()->route('resume', [$profile]);
        
         //return redirect()->route('resume', [$id]);
-        return redirect()->route('resume.show', ['id' => $id]);
-      
-        
-       
-     
+        //return redirect()->route('resume.show', ['id' => $id]);
+  
     }
 
   

@@ -149,6 +149,14 @@ body {
     color: #000!important;
     background-color: #fff!important;
 }
+.w3-blue,.w3-hover-blue:hover{
+    color:#000!important;
+    background-color:#2196F3!important
+}
+.w3-blue-grey,.w3-hover-blue-grey:hover,.w3-blue-gray,.w3-hover-blue-gray:hover{
+    color:#000!important;
+    background-color:#607d8b!important
+}
 hr {
     border: 0;
     border-top: 1px solid #eee;
@@ -206,7 +214,7 @@ hr {
 <body class="w3-light-grey">
 
 <!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1200px;  min-height: 80%;">
+<div class="w3-content w3-margin-top" style="max-width:1200px; min-height: 80%;">
 
   <!-- The Grid -->
   <div class="w3-row-padding">
@@ -214,7 +222,7 @@ hr {
     <!-- Left Column -->
     <div class="w3-third">
     
-      <div class="w3-white w3-text-grey w3-card-4">
+      <div class="w3-blue w3-text-grey w3-card-4">
             <div class="w3-display-container">
             <img src="{{ asset('storage/'.$profile->profileimg) }}" >
             
@@ -292,7 +300,7 @@ hr {
   </div>
   <!-- End Page Container -->
 </div>
-<footer class="w3-teal w3-center ">
+<footer class="w3-blue w3-center ">
 <p>Ein Angebot der <a href="https://www.stimme.de/" target="_blank">Stimme</a></p>
 </footer>
 </body>

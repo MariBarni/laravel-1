@@ -149,6 +149,9 @@ body {
     color: #000!important;
     background-color: #fff!important;
 }
+.w3-sand,.w3-hover-sand:hover{
+    color:#000!important;background-color:#fdf5e6!important
+}
 hr {
     border: 0;
     border-top: 1px solid #eee;
@@ -214,7 +217,7 @@ hr {
     <!-- Left Column -->
     <div class="w3-third">
     
-      <div class="w3-white w3-text-grey w3-card-4">
+      <div class="w3-sand w3-text-grey w3-card-4">
             <div class="w3-display-container">
             <img src="{{ asset('storage/'.$profile->profileimg) }}" >
             
@@ -292,7 +295,7 @@ hr {
   </div>
   <!-- End Page Container -->
 </div>
-<footer class="w3-teal w3-center ">
+<footer class="w3-sand w3-center ">
 <p>Ein Angebot der <a href="https://www.stimme.de/" target="_blank">Stimme</a></p>
 </footer>
 </body>

@@ -10,6 +10,10 @@ module.exports = {
                 success: colors.green,
                 warning: colors.yellow,
             },
+            screens: {
+                print: {raw: 'print'},
+                screen: {raw: 'screen'},
+              },
         },
     },
     plugins: [
