@@ -47,7 +47,8 @@ class ProfileForm extends Component implements HasForms
     /* Profile Variables
     public null|string $bio = null;*/
 
-    public Profile $profile;       
+    public Profile $profile;  
+    public null|string $token = null;     
     public null|string $name = null;
     public null|string $vorname = null;
     public null|string $wunschposition= null;
@@ -61,6 +62,8 @@ class ProfileForm extends Component implements HasForms
     public null|string $land= null;
     public null|array $profileimg= null;
     public null|string $templa = null;
+    public $profileId;
+    
     /* Experience Variables*/
     public null|array $experiences = [];
 
@@ -74,13 +77,14 @@ class ProfileForm extends Component implements HasForms
      public null|array $languages=[];
 
      public $currentStep = 1;
-
+     public $totalSteps = 2;
+    
  
      public function mount(): void
      {
-        $currentStep = 1;
         $this->form->fill();
-        
+        $this->currentStep = 1;
+     
      }
      
 
@@ -114,7 +118,7 @@ class ProfileForm extends Component implements HasForms
                          Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d/m/Y')->minDate(now()->subYears(120))->maxDate(now())->format('d/m/Y'),    
                          Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
                          Forms\Components\TextInput::make('straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
-                         Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->required(),            
+                         Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required(),            
                          Forms\Components\TextInput::make(name:'ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
                          Forms\Components\TextInput::make(name:'land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
                          FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(),
@@ -161,7 +165,7 @@ class ProfileForm extends Component implements HasForms
                                  ->hidden(fn ($get) => $get('currente'))
                                  ->nullable()
                                  ->withoutTime()->columns(2) ->columnSpan(2),
-                         ])->orderable()->columns(2) ->columnSpan(2) ->minItems(1)->createItemButtonLabel('+')->relationship('educations')
+                         ])->orderable()->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(2)->createItemButtonLabel('+')->relationship('educations')
                      
                      ]),
  
@@ -223,19 +227,24 @@ class ProfileForm extends Component implements HasForms
  
     public function submit()
     {
+    
 
-        $profile=Profile::create($this->form->getState());        
-        $this->form->model($profile)->saveRelationships(); 
+        $this->currentStep++;
+         if($this->currentStep > $this->totalSteps){
+             $this->currentStep = $this->totalSteps;
+         }
+
+         $profile=Profile::create($this->form->getState());        
+         $this->form->model($profile)->saveRelationships();
+         $profileId=$profile->id;
+         $currentStep= 2;
+         return view('livewire.profile-form', compact(['profile', $currentStep]));
+       
+         //$profile=Profile::where('email', $this->email)->get();
         
-        $id = $profile->id;
-        $templa =$profile->templa;
-        $currentStep = 2;       
-       
-        //return redirect()->route('resume', [$profile]);
-       
+                              
         //return redirect()->route('resume', [$id]);
-        //return redirect()->route('resume.show', ['id' => $id]);
-  
+       
     }
 
   
