@@ -69,6 +69,8 @@
                             ])>
                                 {{ $label }}
                             </label>
+                            <img src="http://10.102.236.51/storage/templa/{{$value}}.png"></img> 
+
 
                             @if ($hasDescription($value))
                                 <p @class([

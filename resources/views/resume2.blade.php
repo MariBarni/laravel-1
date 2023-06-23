@@ -235,11 +235,21 @@ hr {
                 </div>
             </div>
             <div class="w3-container">
+            @if ($profile->wunschposition == null)
+            @else
                 <p><i class="fa fa-briefcase w3-margin-right w3-large w3-text-black"></i>{{$profile->wunschposition}}</p>
+                @endif
+                
                 <p><i class=" fa fa-home w3-margin-right w3-large w3-text-black"></i> {{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</p>
                 <p><i class=" fa fa-envelope-o w3-margin-right w3-large w3-text-black"></i> {{$profile->email}}</p>
+                @if ($profile->handynummer == null)
+            @else
                 <p><i class="fa fa-phone w3-margin-right w3-large w3-text-black"></i>{{$profile->handynummer}}</p>
+                @endif
+                @if ($profile->geburtstag == null)
+            @else
                 <p><i class=" fa fa-birthday-cake w3-margin-right w3-large w3-text-black"></i>{{$profile->geburtstag}}</p>
+                @endif
                 <hr>
 
                 <p class="w3-large"><b><i class="fa fa-star-o  w3-margin-right w3-text-black"></i>Fähigkeiten</b></p>
@@ -270,7 +280,7 @@ hr {
             @foreach ($profile->experiences as $exp)
             <div class="w3-container">
                 <h5 class="w3-opacity"><b>{{$exp->jname}} / {{$exp->cnname}}</b></h5>
-                <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - {{ $exp->finished_at?->format('d/m/Y') }}  </h6>
+                <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</h6>
                 <p>{{$exp->description}}</p>
                 <hr>
             </div>
@@ -286,7 +296,7 @@ hr {
         @foreach ($profile->educations as $edu)
         <div class="w3-container">
           <h5 class="w3-opacity"><b>{{$edu->abschluss}} / {{$edu->bildungseinrichtung}} </b></h5>
-          <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - {{ $edu->finished_at?->format('d/m/Y') }}</h6>
+          <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d/m/Y') }} @endif</h6>
           <p>{{$edu->fachrichtung}}</br>{{$edu->orth}}</p>
           <hr>
         </div>

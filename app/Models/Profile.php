@@ -67,11 +67,7 @@ class Profile extends Model
     {
         return $this->hasMany(Language::class);
     }
-    public function skills():HasMany
-    {
-        return $this->hasMany(Skill::class);
-    }
-
+  
  
     
   
