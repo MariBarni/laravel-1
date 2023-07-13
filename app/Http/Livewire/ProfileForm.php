@@ -85,6 +85,23 @@ class ProfileForm extends Component implements HasForms
      {
 
         $this->form->fill();
+                   //delete records older than 1 hour
+                   $date  = Carbon::now()->subMinutes( 60 );
+                   Profile::where('created_at', '<=', $date )->delete();
+                   Education::where('created_at', '<=', $date )->delete();
+                   Experience::where('created_at', '<=', $date )->delete();
+                   Language::where('created_at',  '<=', $date )->delete();
+       
+                   //delete photos older than 1 hour
+                   $files = collect( Storage::files("public"));
+                   $files->each(function ($file) {
+                       $lastModified = Storage::lastModified($file);
+                       $lastModified = Carbon::parse($lastModified);
+              
+                       if (Carbon::now()->gt($lastModified->addHour(1))) {
+                           Storage::delete($file);
+                       }
+                   });  
        
      
      }

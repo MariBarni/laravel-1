@@ -19,7 +19,8 @@ class Education extends Model
         'currente',
         'started_at',
         'finished_at',
-        'sort'
+        'sort',
+        'profile_id'
     ];
     protected $casts = [
         'currente' => 'boolean',

@@ -14,7 +14,8 @@ class Language extends Model
     protected $fillable=[
         'id',
         'language',
-        'level'
+        'level',
+        'profile_id'
     ];
 
     public function profile():BelongsTo

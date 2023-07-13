@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('profileimg')->nullable();                
             $table->string('templa')->nullable(); 
             $table->string('tags')->nullable(); 
+            $table->string('full_name')->virtualAs('concat(name, \' \', vorname)');
             $table->timestamps();
         });
     }

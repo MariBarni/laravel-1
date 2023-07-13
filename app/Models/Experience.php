@@ -20,7 +20,8 @@ class Experience extends Model
         'currentj',
         'started_at',
         'finished_at',
-        'sort' 
+        'sort' ,
+        'profile_id'
     ];
     protected $casts = [
         'currentj' => 'boolean',

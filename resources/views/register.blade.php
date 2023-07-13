@@ -12,6 +12,8 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
 
+                
+
         <title>{{ config('app.name') }}</title>
 
         <style>[x-cloak] { display: none !important; }</style>
@@ -24,14 +26,17 @@
 
     </head>
 
-    <body class="antialiased">           
-     
-        <livewire:profile-form>
-         
-        @yield('content')
+    <body class="antialiased">     
 
-        @livewire('notifications')
-      
+  
+               
+                 <livewire:multi-step-form>
+   
+          
+   @yield('content')
 
-    </body>
+@livewire('notifications')
+
+
+</body>
 </html>

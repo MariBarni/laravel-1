@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\Design;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 //use PDF;
@@ -70,6 +71,12 @@ class ResumeController extends Controller
         $templa=$profile->templa;
      
         return view($templa)->with('profile', $profile);
+
+    }
+    public function model()
+    {
+        $designs = Design::all();           
+        return view($vorschau)->with('designs', $designs);
 
     }
 
