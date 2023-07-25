@@ -2,6 +2,9 @@ import { defineConfig } from 'vite'
 import laravel, { refreshPaths } from 'laravel-vite-plugin'
 
 export default defineConfig({
+    build: {
+        chunkSizeWarningLimit: 1600
+    },
     plugins: [
         laravel({
             input: ['resources/css/app.css', 'resources/js/app.js'],
@@ -13,4 +16,7 @@ export default defineConfig({
             ],
         }),
     ],
+    
+  
+    
 })

@@ -208,7 +208,7 @@ class MultiStepForm extends Component implements HasForms
                 Bitte warten Sie...
             </span> '))
                 
-                ])->columns(2)->collapsed(),              
+                ])->columns(2),              
 
         ];
     }
@@ -235,12 +235,10 @@ class MultiStepForm extends Component implements HasForms
 
     public function render(): View
     {
-        return view('livewire.profile-form');
+        return view('livewire.multi-step-form');
     }
  
-          
- /*  $data = ['name'=>$this->first_name.' '.$this->last_name,'email'=>$this->email];
-return redirect()->route('registration.success', $data);*/
+ 
          
     
 }

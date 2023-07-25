@@ -25,16 +25,15 @@
 
     <body class="antialiased bg-white"> 
    
+
+  
+    <livewire:show-designs>
+
     
-
-    <livewire:profile-form>
-        
-
-                  
    @yield('content')
 
 @livewire('notifications')
 
-
+@include('layouts/footer')
 </body>
 </html>

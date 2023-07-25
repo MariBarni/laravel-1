@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResumeController;
 use App\Http\Livewire\ProfileForm;
 use App\Http\Livewire\SessionForm;
-use App\Http\Controllers\Step\ShowController;
+use App\Http\Livewire\ShowDesigns;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,21 +27,16 @@ Route::get('/', function () {
 Route::get('/resume/download/{id}',[ResumeController::class, 'download'])->name('resume.download');
 
 Route::get('/resume/{id}', [ResumeController::class, 'show'])->name('resume.show');
-
-Route::get('vorschau/', [ResumeController::class, 'model'])->name('model.show');
+Route::get('/preview/{id}/{name}', [ResumeController::class, 'preview'])->name('preview.show');
+Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
 
 //Route::get('resume/', 'App\Http\Controllers\ResumeController@show');
 
 
-Route::get('/steps', function () {
-    return view('steps');
-});
+Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 
 
-Route::view('steps', 'steps');
-
-
-Route::view('vorschau', 'vorschau');
+Route::view('/main','main')->name('main');
 Route::view('/register','register')->name('register');
 Route::view('/registration-success','registration-success')->name('registration.success');
 

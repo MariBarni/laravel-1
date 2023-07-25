@@ -311,9 +311,7 @@ hr {
   </div>
   <!-- End Page Container -->
 </div>
-<footer class="w3-blue w3-center ">
-<p>Ein Angebot der <a href="https://www.stimme.de/" target="_blank">Stimme</a></p>
-</footer>
+
 </body>
 </html>
 

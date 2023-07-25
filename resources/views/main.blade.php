@@ -3,6 +3,7 @@
     
     <head>
         <meta charset="utf-8">
+
         <meta name="application-name" content="{{ config('app.name') }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,18 +24,14 @@
 
     </head>
 
-    <body class="antialiased bg-white"> 
-   
-    
-
+    <body class="antialiased">           
+     
     <livewire:profile-form>
-        
+         
+        @yield('content')
 
-                  
-   @yield('content')
+        @livewire('notifications')
+      
 
-@livewire('notifications')
-
-
-</body>
+    </body>
 </html>

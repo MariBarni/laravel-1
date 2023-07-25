@@ -16,9 +16,11 @@
         @stack('scripts')
     </head>
 
-    <body class="antialiased">
+    <body class="antialiased bg-white" >
+        @include('layouts/navigation')
         {{ $slot }}
 
         @livewire('notifications')
+        @include('layouts/footer')
     </body>
 </html>

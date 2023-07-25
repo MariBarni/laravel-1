@@ -39,7 +39,7 @@ class ResumeController extends Controller
         return $pdf->download('resume.pdf');
     }*/
     public function download($id) {
-        $profile = Profile::findOrFail($id);
+        $profile = Profile::find($id);
         $templa=$profile->templa;
         //$view = View('resume')->with('profile', $profile);  
        
@@ -65,20 +65,42 @@ class ResumeController extends Controller
     
       }
 
+      public function preview($id, $name) {
+    
+        $profile = Profile::find($id);
+        return view($name)->with('profile', $profile);
+     
+    }
+    public function herunteladen($id, $name) {
+        $profile = Profile::find($id);           
+
+        $pdf = \App::make('dompdf.wrapper');  
+      
+        Pdf::setOption(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true, 'chroot' => '/public/storage/']);
+        
+        $pdf->getDomPDF()->setBasePath('/public/storage')->set_option('enable_remote', TRUE);
+        
+        //$pdf = Pdf::loadView('resume', $data);    
+           // Render the HTML as PDF
+           $pdf = PDF::loadView($name, ['profile' => $profile])->setOptions(['defaultFont' => 'sans-serif']);
+
+        
+        // Output the generated PDF to Browser
+        return $pdf->stream(); // screenshot #2
+   
+    
+      }
+
     public function show($id)
     {
-        $profile = Profile::findOrFail($id);
+        $profile = Profile::find($id);
         $templa=$profile->templa;
      
         return view($templa)->with('profile', $profile);
 
     }
-    public function model()
-    {
-        $designs = Design::all();           
-        return view($vorschau)->with('designs', $designs);
 
-    }
+   
 
     
 }

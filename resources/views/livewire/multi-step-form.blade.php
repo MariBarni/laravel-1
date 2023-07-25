@@ -1,10 +1,13 @@
-<div class="w-screen h-screen flex items-center justify-center bg-white flex flex-row flex-wrap">
-    <div class="border-gray-200 rounded-lg">
+<section class="py-10 bg-gray-100">
+  <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 ">
+      
+       
         <form wire:submit.prevent="submit">
           
-        {{ $this->form }}       
+    
+        {{ $this->form }}      
 
-        </form>    
+            </form>    
             
-    </div>
-</div>
+        </div>
+</section>
