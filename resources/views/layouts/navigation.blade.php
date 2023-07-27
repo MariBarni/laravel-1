@@ -1,9 +1,9 @@
   <!-- Header Navbar -->
   <nav class="fixed top-0 left-0 z-20 w-full border-b border-gray-200 bg-indigo-900 py-2.5 px-6 sm:px-4">
-  <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-    <a href="#" class="flex items-center">
-    <svg width="240" height="49" class="logo__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359 74">
-                    <path id="stimme" fill="#ffffff" d="M268.3,49.6h37l4.5-11.4l-1.7-0.9c-4.7,5.5-11.6,9.9-19.2,9.9c-4.3,0-4.7-2.4-4.7-5.9v-13h1.4
+    <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
+    <a href="/" class="flex items-center">
+      <svg width="240" height="49" class="logo__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359 74">
+      <path id="stimme" fill="#ffffff" d="M268.3,49.6h37l4.5-11.4l-1.7-0.9c-4.7,5.5-11.6,9.9-19.2,9.9c-4.3,0-4.7-2.4-4.7-5.9v-13h1.4
                         c6,0,9.1,1.4,10.8,7.6h2.4V18.3h-2.4c-2.1,6.2-4.7,7.2-10.9,7.2h-1.2v-12c0-4.5,0-6.3,5.4-6.3c7,0,13.3,4.5,17.5,9.9l1.9-0.8
                         l-3.9-11.5h-37v2c4.4,0,5.9,1.4,5.9,5.6V42c0,4.2-1.5,5.6-5.9,5.6v2H268.3z M259.2,12.4c0-4.6,1.5-5.3,5.9-5.6v-2h-17.5l-10.1,28.1
                         l-9.8-28.1h-17.9v2c4.1,0,5.9,1.1,5.9,5.6V36c0,9.9-0.9,10.6-6.3,11.6v2h15.5v-2c-5.4-0.6-6-1.8-6-11.6V11.1h0.1l13.9,38.5h2.2
@@ -75,33 +75,38 @@
                         z M348.6,10.5c0,2.6,0.8,3.4,2.4,3.4c2.1,0,2.8-1.3,2.8-3.4v-5c0-1-0.4-1.3-1.4-1.3V3.6h3.6v0.5c-1,0-1.4,0.3-1.4,1.3v5.1
                         c0,2.5-1.1,3.9-3.9,3.9c-2.9,0-4.2-1.3-4.2-3.6V5.4c0-1-0.4-1.3-1.4-1.3V3.6h5.1v0.5c-1,0-1.4,0.3-1.4,1.3v5L348.6,10.5z"></path>
                     </svg>
+                  </a>
+                  <!-- Icon Menu Section -->
+                  <div class="flex items-center space-x-5">
+                                 
+                    @guest
+                    <a class="flex text-white hover:text-grey-800
+                    cursor-pointer transition-colors duration-300" href="{{ route('login') }}">
 
-      
-    </a>
-    <div class="mt-2 sm:mt-0 sm:flex md:order-2">
-      <!-- Login Button -->
-        <button type="button" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg">Anmelden</button>
-       
-      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 md:hidden" aria-controls="navbar-sticky" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
-        <svg class="h-6 w-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-      </button>
-    </div>
-    <div class="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto" id="navbar-sticky">
-      <ul class="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:text-sm md:font-medium">
-        <li>
-          <a href="#" class="block rounded bg-blue-700 py-2 pl-3 pr-4 text-white md:bg-transparent md:p-0 md:text-blue-700" aria-current="page">Home</a>
-        </li>
-        <li>
-          <a href="#" class="block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700">About</a>
-        </li>
-        <li>
-          <a href="#" class="block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700">Services</a>
-        </li>
-        <li>
-          <a href="#" class="block rounded py-2 pl-3 pr-4 text-gray-700 hover:bg-gray-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+
+                    Anmelden
+                  </a>
+                  @else
+                  <a class="flex text-white hover:text-grey-800
+                    cursor-pointer transition-colors duration-300" href="{{ route('abmelden') }}">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    
+                    Abmelden
+                  </a>
+                  
+                  @endguest
+
+
+                  
+                  
+               
+                </div>
+              </div>
+            </nav>
+

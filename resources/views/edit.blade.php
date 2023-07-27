@@ -14,27 +14,26 @@
         <title>{{ config('app.name') }}</title>
 
         <style>[x-cloak] { display: none !important; }</style>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
-     
+        @vite(['resources/css/app.css', 'resources/js/app.js'])         
         @livewireStyles
         @livewireScripts
         @stack('scripts')
+      
 
     </head>
 
     <body class="antialiased bg-white"> 
    
+        @include('layouts/navigation')
     
+  
+        <livewire:edit-step-form>
 
-    <livewire:profile-form>
-        
+    
+    @yield('content')
 
-                  
-   @yield('content')
+    @livewire('notifications')
 
-@livewire('notifications')
-
-
+    @include('layouts/footer')
 </body>
 </html>

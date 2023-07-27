@@ -49,7 +49,10 @@ class Profile extends Model
     ];
   
  
-     
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class,'email', 'owner_key');
+    } 
    
 
     public function experiences():HasMany

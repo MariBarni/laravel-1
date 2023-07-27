@@ -79,7 +79,7 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('token'),
+                
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('vorname'),
                 Tables\Columns\TextColumn::make('wunschposition'),
@@ -93,6 +93,7 @@ class ProfileResource extends Resource
                 Tables\Columns\TextColumn::make('land'),
                 Tables\Columns\TextColumn::make('profileimg'),
                 Tables\Columns\TextColumn::make('tags'),
+                Tables\Columns\TextColumn::make('token'),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime(),
                 Tables\Columns\TextColumn::make('updated_at')

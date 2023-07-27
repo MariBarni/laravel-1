@@ -6,6 +6,7 @@ use Livewire\Component;
 
 use App\Models\Design;
 use App\Models\Profile;
+use cookie;
 
 class ShowDesigns extends Component
 {
@@ -17,17 +18,20 @@ class ShowDesigns extends Component
     {
         $profileID=$this->profileID=$id;
         $designs= Design::all();
-        return view('livewire.show-designs', [
-            'designs' => Design::all(), 
-            'profileID' =>$profileID ,         
-        ]);
+               
+           
+            return view('livewire.show-designs', [
+                'designs' => Design::all(), 
+                'profileID' =>$profileID ,         
+            ]);   
+        
     
     } 
    
 
     public function render()
     {
-        
+       
         return view('livewire.show-designs', [
             'designs' => Design::all(),            
         ]);

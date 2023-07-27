@@ -42,9 +42,14 @@ class User extends Authenticatable implements FilamentUser
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
+    public function profile(): HasOne
+    {
+        return $this->hasOne(Profile::class,'email', 'email');
+    }
     public function canAccessFilament(): bool
     {
-        return str_ends_with($this->email, '@stimme-mediengruppe.de');
+        return str_ends_with($this->email, '@stimme-mediengruppe.de')&& $this->is_admin == 1;
     }
 }

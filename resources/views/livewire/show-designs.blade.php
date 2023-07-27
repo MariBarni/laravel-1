@@ -8,6 +8,14 @@
             <div class="filament-forms-section-header flex-1 space-y-1">
               <h3 class="font-bold tracking-tight pointer-events-none text-xl font-bold">Design festlegen</h3>
               <p class="text-gray-500 text-base">Los geht´s, wähle eine Vorlage für deinen Lebenslauf aus!</p>
+              <div class="inline-block mr-2 mt-2">
+                    <a type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg flex items-center" href="{{ url('/edit/' . $profileID ) }}">
+                        <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                        </svg>
+                        Editieren
+                    </a>
+                </div>
             </div>
           </div>
 
@@ -20,8 +28,10 @@
                   <div class="p-3">
                     <span class="text-sm text-primary"> {{$design->dname}}</span>
                     <br/>
-                    <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg" href="{{ url('/preview/' . $profileID . '/'.$design->dname) }}">Vorschau</a>
-                    <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg" href="{{ url('/download/' . $profileID . '/'.$design->dname) }}">Herunteladen</a>
+                    <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg"
+                     href="{{ url('/preview/' . $profileID . '/'.$design->dname) }}">Vorschau</a>
+                    <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg" 
+                    href="{{ url('/download/' . $profileID . '/'.$design->dname) }}">Herunteladen</a>
 
                   </div>
                 </div>

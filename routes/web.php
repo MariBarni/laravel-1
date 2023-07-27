@@ -5,6 +5,8 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Livewire\ProfileForm;
 use App\Http\Livewire\SessionForm;
 use App\Http\Livewire\ShowDesigns;
+use App\Http\Livewire\EditStepForm;
+use App\Http\Livewire\LoginForm;
 
 
 /*
@@ -34,9 +36,11 @@ Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->
 
 
 Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
-
+Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 
 Route::view('/main','main')->name('main');
+Route::view('/login','login')->name('login');
+Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
 Route::view('/register','register')->name('register');
 Route::view('/registration-success','registration-success')->name('registration.success');
 

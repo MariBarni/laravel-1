@@ -6,8 +6,7 @@ use App\Models\Profile;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Language;
-use App\Models\Skill;
-use App\Models\Link;
+use App\Models\User;
 use Livewire\Component;
 use Filament\Forms;
 use Illuminate\Contracts\View\View;
@@ -218,19 +217,24 @@ class MultiStepForm extends Component implements HasForms
     }
     public function submit()
     {
-          
-            
+     
             //create record
             $profile=Profile::create($this->form->getState());        
             $this->form->model($profile)->saveRelationships();
-            $profileId=$profile->id;  
+            $profileId=$profile->id;
+            $proName=$profile->name;
+            $proEmail=$profile->email;
+            $proToken = Hash::make($profile->token); 
+            
+            
+            $user=User::create( ['name' => $proName,'email'=>$proEmail,'password'=> $proToken]); 
+          
 
             //Preview Auswahl
             return redirect()->route('model.show', ['id' => $profileId]);
-            
-      
-        
+
     }
+   
     
 
     public function render(): View
