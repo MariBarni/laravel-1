@@ -38,10 +38,13 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Livewire\WithFileUploads;
+
 
 class EditStepForm extends Component implements HasForms
 {
     use InteractsWithForms; 
+    use WithFileUploads;
     
     /* Profile Variables
     public null|string $bio = null;*/
@@ -59,7 +62,7 @@ class EditStepForm extends Component implements HasForms
     public null|string $plz= null;
     public null|string $ort= null;
     public null|string $land= null;
-    public null|array $profileimg= null;
+    public  $profileimg;
     public null|string $templa = null;
     public $profileId;
     
@@ -80,6 +83,8 @@ class EditStepForm extends Component implements HasForms
         public function mount($id): void 
     {
         $profile = Profile::find($id);
+        
+        
         $this->form->fill([
             'name' => $profile->name,
             'vorname' => $profile->vorname,
@@ -92,6 +97,8 @@ class EditStepForm extends Component implements HasForms
             'plz' => $profile->plz,
             'ort' => $profile->ort,
             'land' => $profile->land,
+            'profileimg'=> $profile->profileimg,
+            'experiences' => $profile->experiences,        
             
         ]);
     } 
@@ -234,6 +241,7 @@ class EditStepForm extends Component implements HasForms
             $this->form->getState(),
         );
     } 
+
     public function render()
     {
         return view('livewire.edit-step-form');
