@@ -6,7 +6,7 @@
         <div id="lebenslauf-design-waehlen" class="filament-forms-section-component rounded-xl border border-gray-300 bg-white">
           <div class="filament-forms-section-header-wrapper flex rtl:space-x-reverse overflow-hidden rounded-t-xl min-h-[56px] px-4 py-2 items-center bg-gray-100">
             <div class="filament-forms-section-header flex-1 space-y-1">
-              <h3 class="font-bold tracking-tight pointer-events-none text-xl font-bold">Design festlegen</h3>
+              <h3 class="tracking-tight pointer-events-none text-xl font-bold">Design festlegen</h3>
               <p class="text-gray-500 text-base">Los geht´s, wähle eine Vorlage für deinen Lebenslauf aus!</p>
               <div class="inline-block mr-2 mt-2">
                     <a type="button" class="focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-blue-500 hover:bg-blue-600 hover:shadow-lg flex items-center" href="{{ url('/edit/' . $profileID ) }}">
