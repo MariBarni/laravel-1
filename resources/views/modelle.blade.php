@@ -25,12 +25,12 @@
 
     <body class="antialiased bg-white"> 
    
-
+    @include('layouts/navigation')
   
     <livewire:show-designs>
 
     
-   @yield('content')
+
 
 @livewire('notifications')
 

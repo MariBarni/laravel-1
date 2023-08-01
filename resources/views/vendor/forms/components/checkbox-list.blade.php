@@ -73,7 +73,7 @@
                     placeholder="{{ $getSearchPrompt() }}"
                     @class([
                         'mb-2 block h-7 px-2 text-sm w-full rounded-lg border-gray-300 shadow-sm text-gray-700 transition duration-75 outline-none focus:border-primary-500 focus:ring-1 focus:ring-inset focus:ring-primary-500',
-                        'dark:text-gray-200 dark:bg-gray-700 dark:border-gray-600' => config('forms.dark_mode'),
+                        'dark:text-gray-200' => config('forms.dark_mode'),
                     ])
                 />
             @endif
@@ -140,11 +140,11 @@
                             {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
                             {{ $getExtraAttributeBag()->class([
                                 'text-primary-600 transition duration-75 rounded shadow-sm focus:border-primary-500 focus:ring-2 focus:ring-primary-500 disabled:opacity-70',
-                                'dark:bg-gray-700 dark:checked:bg-primary-500' => config('forms.dark_mode'),
+                                'dark:bg-gray-700' => config('forms.dark_mode'),
                                 'border-gray-300' => ! $errors->has($getStatePath()),
                                 'dark:border-gray-600' => (! $errors->has($getStatePath())) && config('forms.dark_mode'),
                                 'border-danger-300 ring-danger-500' => $errors->has($getStatePath()),
-                                'dark:border-danger-400 dark:ring-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
+                                'dark:border-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
                             ])->merge([
                                 'disabled' => $isDisabled(),
                             ]) }}

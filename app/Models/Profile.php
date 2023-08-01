@@ -35,8 +35,7 @@ class Profile extends Model
         'plz',
         'ort',
         'land',
-       'profileimg',
-       'templa',
+       'profileimg',       
        'tags'
     ];
     

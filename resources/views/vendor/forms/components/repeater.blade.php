@@ -89,7 +89,7 @@
                             "
                             @class([
                                 'bg-white border border-gray-300 shadow-sm rounded-xl relative',
-                                'dark:bg-gray-800 dark:border-gray-600' => config('forms.dark_mode'),
+                                'dark:bg-gray-800' => config('forms.dark_mode'),
                             ])
                         >
                             @if ((! $isItemMovementDisabled) || (! $isItemDeletionDisabled) || $isCloneable || $isCollapsible || $hasItemLabels)
@@ -97,7 +97,7 @@
                                     @if ($isCollapsible) x-on:click.stop="isCollapsed = ! isCollapsed" @endif
                                     @class([
                                         'flex items-center h-10 overflow-hidden border-b bg-gray-50 rounded-t-xl',
-                                        'dark:bg-gray-800 dark:border-gray-700' => config('forms.dark_mode'),
+                                        'dark:bg-gray-800' => config('forms.dark_mode'),
                                         'cursor-pointer' => $isCollapsible,
                                     ])
                                 >
@@ -242,7 +242,7 @@
                                                     type="button"
                                                     @class([
                                                         'flex items-center justify-center flex-none w-10 h-10 text-danger-600 transition hover:text-danger-500',
-                                                        'dark:text-danger-500 dark:hover:text-danger-400' => config('forms.dark_mode'),
+                                                        'dark:text-danger-500' => config('forms.dark_mode'),
                                                     ])
                                                 >
                                                     <span class="sr-only">

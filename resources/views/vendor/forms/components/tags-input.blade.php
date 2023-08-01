@@ -28,7 +28,7 @@
                 'border-gray-300' => ! $errors->has($getStatePath()),
                 'dark:border-gray-600' => (! $errors->has($getStatePath())) && config('forms.dark_mode'),
                 'border-danger-600 ring-1 ring-inset ring-danger-600' => $errors->has($getStatePath()),
-                'dark:border-danger-400 dark:ring-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
+                'dark:border-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
             ])
         >
             @unless ($isDisabled())
@@ -56,7 +56,7 @@
                         x-model="newTag"
                         {{ $getExtraInputAttributeBag()->class([
                             'webkit-calendar-picker-indicator:opacity-0 block w-full border-0',
-                            'dark:bg-gray-700 dark:text-gray-200 dark:placeholder-gray-400' => config('forms.dark_mode'),
+                            'dark:bg-gray-700' => config('forms.dark_mode'),
                         ]) }}
                     />
 

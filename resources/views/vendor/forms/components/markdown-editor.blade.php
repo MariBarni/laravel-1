@@ -151,7 +151,7 @@
                                 <button
                                     type="button"
                                     x-on:click.prevent="tab = 'edit'"
-                                    x-bind:class="{ 'text-gray-400 @if (config('forms.dark_mode')) dark:text-gray-400 @endif': tab !== 'edit' }"
+                                    x-bind:class="{ 'text-gray-400 @if (config('forms.dark_mode')) @endif': tab !== 'edit' }"
                                     class="text-sm hover:underline"
                                 >
                                     {{ __('forms::components.markdown_editor.toolbar_buttons.edit') }}
@@ -162,10 +162,10 @@
                                 <button
                                     type="button"
                                     x-on:click.prevent="tab = 'preview'"
-                                    x-bind:class="{ 'text-gray-400 @if (config('forms.dark_mode')) dark:text-gray-400 @endif': tab !== 'preview' }"
+                                    x-bind:class="{ 'text-gray-400 @if (config('forms.dark_mode')) @endif': tab !== 'preview' }"
                                     @class([
                                         'text-sm hover:underline',
-                                        'text-gray-400' . (config('forms.dark_mode') ? ' dark:text-gray-400' : null),
+                                        'text-gray-400' . (config('forms.dark_mode') ? '' : null),
                                     ])
                                 >
                                     {{ __('forms::components.markdown_editor.toolbar_buttons.preview') }}
@@ -222,11 +222,11 @@
                         @endif
                         class="tracking-normal overflow-y-hidden font-mono block absolute bg-transparent top-0 text-sm left-0 z-1 w-full h-full min-h-full resize-none transition duration-75 rounded-lg shadow-sm outline-none focus:border-primary-500 focus:ring-1 focus:ring-inset focus:ring-primary-500 caret-black whitespace-pre-wrap rtl:whitespace-normal"
                         x-bind:class="{
-                            'dark:caret-white dark:focus:border-primary-500': @js(config('forms.dark_mode')),
+                            'dark:caret-white': @js(config('forms.dark_mode')),
                             'border-gray-300': ! (@js($getStatePath()) in $wire.__instance.serverMemo.errors),
                             'dark:border-gray-600': ! (@js($getStatePath()) in $wire.__instance.serverMemo.errors) && @js(config('forms.dark_mode')),
                             'border-danger-600 ring-inset ring-danger-600': @js($getStatePath()) in $wire.__instance.serverMemo.errors,
-                            'dark:border-danger-400 dark:ring-danger-400': (@js($getStatePath()) in $wire.__instance.serverMemo.errors) && @js(config('forms.dark_mode'))
+                            'dark:border-danger-400': (@js($getStatePath()) in $wire.__instance.serverMemo.errors) && @js(config('forms.dark_mode'))
                         }"
                     ></textarea>
                 </file-attachment>
@@ -237,14 +237,14 @@
                     style="min-height: 150px;"
                     @class([
                         'w-full h-full rounded-lg px-3 py-2 border border-transparent font-mono tracking-normal bg-white text-sm text-gray-900 break-words whitespace-pre-wrap rtl:whitespace-normal',
-                        'dark:bg-gray-700 dark:border-gray-600 dark:text-white' => config('forms.dark_mode'),
+                        'dark:bg-gray-700' => config('forms.dark_mode'),
                     ])
                 ></div>
             </div>
 
             <div @class([
                 'prose max-w-none block w-full h-full min-h-full px-3 py-2 bg-white border border-gray-300 rounded-lg shadow-sm break-words focus:border-primary-300',
-                'dark:prose-invert dark:border-gray-600 dark:bg-gray-700' => config('forms.dark_mode'),
+                'dark:prose-invert' => config('forms.dark_mode'),
             ]) x-show="tab === 'preview'" x-html="preview" x-cloak style="min-height: 150px;"></div>
         </div>
     </div>

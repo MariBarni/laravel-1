@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">    
     <head>
         <meta charset="utf-8">
         <meta name="application-name" content="{{ config('app.name') }}">
@@ -24,7 +23,7 @@
 
     <body class="antialiased bg-white"> 
    
-        @include('layouts/navigation')
+        @include('layouts/navigationHome')
     
   
         <livewire:multi-step-form>

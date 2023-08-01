@@ -23,11 +23,11 @@
         'text-gray-600 hover:text-gray-500' => $color === 'secondary',
         'text-success-600 hover:text-success-500' => $color === 'success',
         'text-warning-600 hover:text-warning-500' => $color === 'warning',
-        'dark:text-primary-500 dark:hover:text-primary-400' => $color === 'primary' && $darkMode,
-        'dark:text-danger-500 dark:hover:text-danger-400' => $color === 'danger' && $darkMode,
-        'dark:text-gray-300 dark:hover:text-gray-200' => $color === 'secondary' && $darkMode,
-        'dark:text-success-500 dark:hover:text-success-400' => $color === 'success' && $darkMode,
-        'dark:text-warning-500 dark:hover:text-warning-400' => $color === 'warning' && $darkMode,
+        'dark:text-primary-500' => $color === 'primary' && $darkMode,
+        'dark:text-danger-500' => $color === 'danger' && $darkMode,
+        'dark:text-gray-300' => $color === 'secondary' && $darkMode,
+        'dark:text-success-500' => $color === 'success' && $darkMode,
+        'dark:text-warning-500' => $color === 'warning' && $darkMode,
     ];
 
     $iconClasses = \Illuminate\Support\Arr::toCssClasses([

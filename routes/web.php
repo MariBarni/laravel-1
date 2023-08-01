@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResumeController;
 use App\Http\Livewire\ProfileForm;
@@ -7,7 +8,6 @@ use App\Http\Livewire\SessionForm;
 use App\Http\Livewire\ShowDesigns;
 use App\Http\Livewire\EditStepForm;
 use App\Http\Livewire\LoginForm;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,24 @@ use App\Http\Livewire\LoginForm;
 */
 
 Route::get('/', function () {
-    return view('profile');
+    return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+
+Route::get('/extra', function () {
+    return view('form');
+})->name('home');
 
 
 //Route::get('/resume?{id}', [ResumeController::class, 'show'])->name('resume');
@@ -39,9 +55,6 @@ Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 
 Route::view('/main','main')->name('main');
-Route::view('/login','login')->name('login');
+Route::view('/anmelden','anmelden')->name('anmelden');
 Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
-Route::view('/register','register')->name('register');
-Route::view('/registration-success','registration-success')->name('registration.success');
 
-//Route::get('/blog/{id}', function ($id) { return view('modale.blade', compact('id') ); });

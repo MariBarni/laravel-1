@@ -48,11 +48,11 @@
                                 {{ $applyStateBindingModifiers('wire:model') }}="{{ $getStatePath() }}"
                                 {{ $getExtraInputAttributeBag()->class([
                                     'focus:ring-primary-500 h-4 w-4 text-primary-600 disabled:opacity-70',
-                                    'dark:bg-gray-700 dark:checked:bg-primary-500' => config('forms.dark_mode'),
+                                    'dark:bg-gray-700' => config('forms.dark_mode'),
                                     'border-gray-300' => ! $errors->has($getStatePath()),
                                     'dark:border-gray-500' => (! $errors->has($getStatePath())) && config('forms.dark_mode'),
                                     'border-danger-600 ring-1 ring-inset ring-danger-600' => $errors->has($getStatePath()),
-                                    'dark:border-danger-400 dark:ring-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
+                                    'dark:border-danger-400' => $errors->has($getStatePath()) && config('forms.dark_mode'),
                                 ]) }}
                                 {!! ($isDisabled || $isOptionDisabled($value, $label)) ? 'disabled' : null !!}
                                 wire:loading.attr="disabled"

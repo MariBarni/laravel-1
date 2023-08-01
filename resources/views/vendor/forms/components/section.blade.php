@@ -34,7 +34,7 @@
         'filament-forms-section-component',
         'rounded-xl border border-gray-300 bg-white' => ! $isAside,
         'grid grid-cols-1 md:grid-cols-2' => $isAside,
-        'dark:border-gray-600 dark:bg-gray-800' => config('forms.dark_mode')  && ! $isAside,
+        'dark:border-gray-600' => config('forms.dark_mode')  && ! $isAside,
     ]) }}
     {{ $getExtraAlpineAttributeBag() }}
 >
@@ -108,7 +108,7 @@
         <div @class([
             'filament-forms-section-content',
             'rounded-xl border border-gray-300 bg-white' => $isAside,
-            'dark:border-gray-600 dark:bg-gray-800' => config('forms.dark_mode') && $isAside,
+            'dark:border-gray-600' => config('forms.dark_mode') && $isAside,
             'p-6' => ! $isCompact,
             'p-4' => $isCompact,
         ])>

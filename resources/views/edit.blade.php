@@ -24,7 +24,7 @@
 
     <body class="antialiased bg-white"> 
    
-        @include('layouts/navigation')
+        @include('layouts/navigationHome')
     
   
         <livewire:edit-step-form>

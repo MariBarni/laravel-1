@@ -20,7 +20,7 @@
     >
         <div @class([
             'border border-gray-300 divide-y shadow-sm bg-white rounded-xl overflow-hidden',
-            'dark:bg-gray-700 dark:border-gray-600 dark:divide-gray-600' => config('forms.dark_mode'),
+            'dark:bg-gray-700' => config('forms.dark_mode'),
         ])>
             <table @class([
                 'w-full text-start divide-y table-auto',
@@ -111,7 +111,7 @@
                                             <button
                                                 x-sortable-handle
                                                 type="button"
-                                                class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                                                class="text-gray-600 hover:text-gray-700"
                                             >
                                                 <x-heroicon-o-switch-vertical class="w-4 h-4" />
 
@@ -148,7 +148,7 @@
                     type="button"
                     @class([
                         'w-full px-4 py-2 flex items-center space-x-1 rtl:space-x-reverse text-sm font-medium text-gray-800 hover:bg-gray-50 focus:bg-gray-50',
-                        'dark:text-white dark:bg-gray-800/60 dark:hover:bg-gray-800/30' => config('forms.dark_mode'),
+                        'dark:text-white' => config('forms.dark_mode'),
                     ])
                 >
                     <x-heroicon-s-plus class="w-4 h-4" />

@@ -64,7 +64,7 @@
                 {!! ($id = $getId()) ? "id=\"{$id}\"" : null !!}
                 @class([
                     'w-full h-full p-0 placeholder-gray-400 bg-transparent border-0 outline-none focus:placeholder-gray-500 focus:ring-0',
-                    'dark:bg-gray-700 dark:placeholder-gray-400' => config('forms.dark_mode'),
+                    'dark:bg-gray-700' => config('forms.dark_mode'),
                     'cursor-default' => $isDisabled(),
                 ])
             />
@@ -87,7 +87,7 @@
             wire:key="{{ $this->id }}.{{ $getStatePath() }}.{{ $field::class }}.panel"
             @class([
                 'absolute hidden z-10 my-1 bg-white border border-gray-300 rounded-lg shadow-md',
-                'dark:bg-gray-700 dark:border-gray-600' => config('forms.dark_mode'),
+                'dark:bg-gray-700' => config('forms.dark_mode'),
                 'p-4 min-w-[16rem] w-fit' => $hasDate(),
             ])
         >
@@ -98,7 +98,7 @@
                             x-model="focusedMonth"
                             @class([
                                 'grow px-1 py-0 text-lg font-medium text-gray-800 border-0 cursor-pointer outline-none focus:ring-0',
-                                'dark:bg-gray-700 dark:text-gray-200' => config('forms.dark_mode'),
+                                'dark:bg-gray-700' => config('forms.dark_mode'),
                             ])
                             dusk="filament.forms.{{ $getStatePath() }}.focusedMonth"
                         >
@@ -113,7 +113,7 @@
                             x-model.debounce="focusedYear"
                             @class([
                                 'w-20 p-0 text-lg text-end border-0 outline-none focus:ring-0',
-                                'dark:bg-gray-700 dark:text-gray-200' => config('forms.dark_mode'),
+                                'dark:bg-gray-700' => config('forms.dark_mode'),
                             ])
                             dusk="filament.forms.{{ $getStatePath() }}.focusedYear"
                         />
@@ -144,10 +144,10 @@
                                 role="option"
                                 x-bind:aria-selected="focusedDate.date() === day"
                                 x-bind:class="{
-                                    'text-gray-700 @if (config('forms.dark_mode')) dark:text-gray-300 @endif': ! dayIsSelected(day),
+                                    'text-gray-700 @if (config('forms.dark_mode')) @endif': ! dayIsSelected(day),
                                     'cursor-pointer': ! dayIsDisabled(day),
-                                    'bg-primary-50 @if (config('forms.dark_mode')) dark:bg-primary-100 dark:text-gray-600 @endif': dayIsToday(day) && ! dayIsSelected(day) && focusedDate.date() !== day && ! dayIsDisabled(day),
-                                    'bg-primary-200 @if (config('forms.dark_mode')) dark:text-gray-600 @endif': focusedDate.date() === day && ! dayIsSelected(day),
+                                    'bg-primary-50 @if (config('forms.dark_mode')) @endif': dayIsToday(day) && ! dayIsSelected(day) && focusedDate.date() !== day && ! dayIsDisabled(day),
+                                    'bg-primary-200 @if (config('forms.dark_mode')) @endif': focusedDate.date() === day && ! dayIsSelected(day),
                                     'bg-primary-500 text-white': dayIsSelected(day),
                                     'cursor-not-allowed pointer-events-none': dayIsDisabled(day),
                                     'opacity-50': focusedDate.date() !== day && dayIsDisabled(day),
@@ -175,7 +175,7 @@
                             x-model.debounce="hour"
                             @class([
                                 'w-16 p-0 pr-1 text-xl bg-gray-50 text-center text-gray-700 border-0 outline-none focus:ring-0',
-                                'dark:text-gray-200 dark:bg-gray-800' => config('forms.dark_mode'),
+                                'dark:text-gray-200' => config('forms.dark_mode'),
                             ])
                             dusk="filament.forms.{{ $getStatePath() }}.hour"
                         />
@@ -183,7 +183,7 @@
                         <span
                             @class([
                                 'text-xl font-medium bg-gray-50 text-gray-700',
-                                'dark:text-gray-200 dark:bg-gray-800' => config('forms.dark_mode'),
+                                'dark:text-gray-200' => config('forms.dark_mode'),
                             ])
                         >:</span>
 
@@ -196,7 +196,7 @@
                             x-model.debounce="minute"
                             @class([
                                 'w-16 p-0 pr-1 text-xl text-center bg-gray-50 text-gray-700 border-0 outline-none focus:ring-0',
-                                'dark:text-gray-200 dark:bg-gray-800' => config('forms.dark_mode'),
+                                'dark:text-gray-200' => config('forms.dark_mode'),
                             ])
                             dusk="filament.forms.{{ $getStatePath() }}.minute"
                         />
@@ -205,7 +205,7 @@
                             <span
                                 @class([
                                     'text-xl font-medium text-gray-700 bg-gray-50',
-                                    'dark:text-gray-200 dark:bg-gray-800' => config('forms.dark_mode'),
+                                    'dark:text-gray-200' => config('forms.dark_mode'),
                                 ])
                             >:</span>
 
@@ -220,7 +220,7 @@
                                 dusk="filament.forms.{{ $getStatePath() }}.second"
                                 @class([
                                     'w-16 p-0 pr-1 text-xl text-center bg-gray-50 text-gray-700 border-0 outline-none focus:ring-0',
-                                    'dark:text-gray-200 dark:bg-gray-800' => config('forms.dark_mode'),
+                                    'dark:text-gray-200' => config('forms.dark_mode'),
                                 ])
                             />
                         @endif

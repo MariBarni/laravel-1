@@ -33,7 +33,7 @@ class Experience extends Model
        
     public function profile():BelongsTo
     {
-        return $this->belongsTo(Profile::class, 'profile_id');
+        return $this->belongsTo(Profile::class);
     }
 
     
