@@ -6,24 +6,33 @@ use Livewire\Component;
 
 use App\Models\Design;
 use App\Models\Profile;
-use cookie;
+use Illuminate\Support\Facades\Auth;
+
 
 class ShowDesigns extends Component
 {
     public $design;
     public $profile;
     public $profileID;
+  
 
     public function mount($id)
     {
-        $profileID=$this->profileID=$id;
-        $designs= Design::all();
-               
-           
-            return view('livewire.show-designs', [
-                'designs' => Design::all(), 
-                'profileID' =>$profileID ,         
-            ]);   
+        if (Auth::check()){
+            
+            $profile=Profile::where(array('user_id' => $id))->first();
+            $profileID=$profile->id;
+          
+ 
+                return view('livewire.show-designs', [
+                    'designs' => Design::all(), 
+                    'profileID' =>$profileID ,         
+                ]);  
+
+        }else{
+            return Redirect::to('/');
+        }
+        
         
     
     } 

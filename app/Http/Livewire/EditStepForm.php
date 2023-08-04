@@ -84,7 +84,6 @@ class EditStepForm extends Component implements HasForms
         public function mount($id): void 
     {
         $profile = $this->profile= Profile::find($id);
-        //dd($profile);
         $educations=Education::where('profile_id', $id)->get();
         $experiences=Experience::where('profile_id', $id)->get();
         $languages=Language::where('profile_id', $id)->get();

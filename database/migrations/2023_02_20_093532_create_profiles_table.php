@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('land')->nullable();
             $table->string('profileimg')->nullable();       
             $table->string('tags')->nullable(); 
+            $table->foreignId('user_id')->nullable();    
             $table->string('full_name')->virtualAs('concat(name, \' \', vorname)');
             $table->timestamps();
         });

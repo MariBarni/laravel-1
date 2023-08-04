@@ -36,7 +36,8 @@ class Profile extends Model
         'ort',
         'land',
        'profileimg',       
-       'tags'
+       'tags',
+       'user_id'
     ];
     
     protected $casts = [
@@ -50,7 +51,7 @@ class Profile extends Model
  
     public function user():BelongsTo
     {
-        return $this->belongsTo(User::class,'email', 'email');
+        return $this->belongsTo(User::class);
     } 
    
 

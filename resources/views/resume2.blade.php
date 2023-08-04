@@ -259,7 +259,7 @@ hr {
                 <br>
                 <hr>
                 <p class="w3-large "><b><i class="fa fa-globe w3-margin-right w3-text-black"></i>Sprachen</b></p>
-                @foreach($profile->languages as $lan)                        
+                @foreach($languages as $lan)                        
                 <p>{{$lan->language}}  {{$lan->level}} </p>
                 @endforeach         
                 <br>
@@ -273,11 +273,11 @@ hr {
     <!-- Right Column -->
     <div class="w3-twothird">
     <!-- Beruferfahrungen .- kann leer Sein -->
-    @if (count($profile->experiences) > 0)
+    @if (count($experiences) > 0)
       <div class="w3-container w3-card w3-white w3-margin-bottom">
             <h2 class="w3-text-grey "><i class="fa fa-suitcase w3-margin-right w3-xxlarge w3-text-blue">
 </i>Beruferfahrungen</h2>
-            @foreach ($profile->experiences as $exp)
+            @foreach ($experiences as $exp)
             <div class="w3-container">
                 <h5 class="w3-opacity"><b>{{$exp->jname}} / {{$exp->cnname}}</b></h5>
                 <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</h6>
@@ -293,7 +293,7 @@ hr {
     <!-- Bildungsweg  -->   
       <div class="w3-container w3-card w3-white">
         <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-graduation-cap w3-margin-right w3-xxlarge w3-text-blue"></i>Bildungsweg</h2>
-        @foreach ($profile->educations as $edu)
+        @foreach ($educations as $edu)
         <div class="w3-container">
           <h5 class="w3-opacity"><b>{{$edu->abschluss}} / {{$edu->bildungseinrichtung}} </b></h5>
           <h6 class="w3-text-blue"><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d/m/Y') }} @endif</h6>

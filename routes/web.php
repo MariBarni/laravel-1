@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\Profile\ShowController;
+
 use App\Http\Livewire\ProfileForm;
 use App\Http\Livewire\SessionForm;
 use App\Http\Livewire\ShowDesigns;
@@ -29,9 +31,28 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    /*Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');*/
+    
+    Route::get('/preview/{id}/{name}', [ResumeController::class, 'preview'])->name('preview.show');
+    Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
+    
+});
+
+Route::middleware('auth')->prefix('profile')->as('profile.')->group(function () {
+    Route::get('/',ShowController::class)->name('show');
+
+    Route::prefix('experiences')->as('experiences.')->group(function () {
+    Route::get('/', App\Http\Controllers\Profile\Experience\ShowController::class)->name('show');
+    });
+ 
+/*
+    Route::prefix('links')->as('links.')->group(function () {
+        Route::get('/', LinkShowController::class)->name('show');
+        Route::get('/{link:token}', TemplateShowController::class)->name('template');
+    });*/
+
 });
 
 require __DIR__.'/auth.php';
@@ -39,22 +60,9 @@ require __DIR__.'/auth.php';
 Route::get('/extra', function () {
     return view('form');
 })->name('home');
-
-
-//Route::get('/resume?{id}', [ResumeController::class, 'show'])->name('resume');
-Route::get('/resume/download/{id}',[ResumeController::class, 'download'])->name('resume.download');
-
-Route::get('/resume/{id}', [ResumeController::class, 'show'])->name('resume.show');
-Route::get('/preview/{id}/{name}', [ResumeController::class, 'preview'])->name('preview.show');
-Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
-
-//Route::get('resume/', 'App\Http\Controllers\ResumeController@show');
-
-
 Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 
-Route::view('/main','main')->name('main');
 Route::view('/anmelden','anmelden')->name('anmelden');
 Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
 

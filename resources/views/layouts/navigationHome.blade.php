@@ -102,11 +102,7 @@
                   
                   @endguest
 
-
-                  
-                  
-               
-                </div>
               </div>
+              
             </nav>
 

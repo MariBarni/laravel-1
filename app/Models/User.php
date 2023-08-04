@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\FilamentUser;
 
@@ -46,10 +47,14 @@ class User extends Authenticatable implements FilamentUser
     ];
     public function profile(): HasOne
     {
-        return $this->hasOne(Profile::class,'email', 'email');
+        return $this->hasOne(Profile::class);
     }
     public function canAccessFilament(): bool
     {
         return str_ends_with($this->email, '@stimme-mediengruppe.de')&& $this->is_admin == 1;
+    }
+    public function getId()
+    {
+        return $this->id;
     }
 }

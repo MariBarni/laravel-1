@@ -39,6 +39,9 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Hash;
+use Session;
+use Illuminate\Support\Facades\Auth;
 
 
 class MultiStepForm extends Component implements HasForms
@@ -228,10 +231,18 @@ class MultiStepForm extends Component implements HasForms
             
             
             $user=User::create( ['name' => $proName,'email'=>$proEmail,'password'=> $proToken]); 
-          
+       
 
-            //Preview Auswahl
-            return redirect()->route('model.show', ['id' => $profileId]);
+            if(\Auth::attempt(array('email' => $proEmail, 'password' => $profile->token))){
+                //$profile=Profile::where(array('email' => $this->email,'token' => $this->token ))->first();
+                $profile=Profile::where(array('email' => $proEmail))->first()->update(['user_id' => $user->id]);
+                session()->flash('message', "You are Login successful.");
+                return redirect()->route('model.show', ['id' => $user->id]);
+        }else{
+            session()->flash('error', 'email and password are wrong.');
+            return redirect()->to('/');
+        }
+    
 
     }
    
