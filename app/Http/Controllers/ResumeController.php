@@ -52,10 +52,11 @@ class ResumeController extends Controller
         {
         $user = auth()->user();
         $profile=Profile::where(array('user_id' => $id))->first();
+        $profileid=$profile->id;
        
-        $educations=Education::where('profile_id', $id)->get();
-        $experiences=Experience::where('profile_id', $id)->get();
-        $languages=Language::where('profile_id', $id)->get();
+        $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
+        $experiences=Experience::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
+        $languages=Language::where('profile_id', $profileid)->get();
         
         return view($name)->with('profile', $profile)->with('experiences', $experiences)->with('educations', $educations)->with('languages', $languages);
         }else{
@@ -68,9 +69,10 @@ class ResumeController extends Controller
         {
         $user = auth()->user();
         $profile=Profile::where(array('user_id' => $id))->first();
-        $educations=Education::where('profile_id', $id)->get();
-        $experiences=Experience::where('profile_id', $id)->get();
-        $languages=Language::where('profile_id', $id)->get();         
+        $profileid=$profile->id;
+        $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
+        $experiences=Experience::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
+        $languages=Language::where('profile_id', $profileid)->get();         
 
         $pdf = \App::make('dompdf.wrapper');  
       

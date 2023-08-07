@@ -19,6 +19,8 @@ class Profile extends Model
     }
 
     public $table = 'profiles';
+
+    protected $guarded = [];
   
    
     protected $fillable=[

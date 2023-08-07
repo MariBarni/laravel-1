@@ -9,6 +9,8 @@ class Education extends Model
 {
     use HasFactory;
     public $table = 'educations';
+
+    protected $guarded = [];
  
     protected $fillable=[
         'id',
@@ -22,6 +24,7 @@ class Education extends Model
         'sort',
         'profile_id'
     ];
+   
     protected $casts = [
         'currente' => 'boolean',
         'started_at' => 'date',

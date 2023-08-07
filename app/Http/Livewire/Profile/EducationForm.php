@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Profile;
 
 use App\Models\Profile;
 use App\Models\User;
-use App\Models\Experience;
+use App\Models\Education;
 
 use Livewire\Component;
 use Filament\Forms;
@@ -44,8 +44,9 @@ use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
 
-class ExperienceForm extends Component implements HasForms
+class EducationForm extends Component implements HasForms
 {
+    
     use InteractsWithForms; 
     public Profile $profile; 
 
@@ -56,7 +57,7 @@ class ExperienceForm extends Component implements HasForms
            
         $this->profile = $profile;
         $this->form->fill([
-            'experiences' =>$profile->experiences?->toArray(),
+            'educations' =>$profile->educations?->toArray(),
         ]);
 
     }
@@ -69,25 +70,30 @@ class ExperienceForm extends Component implements HasForms
         
            Forms\Components\Wizard::make()->schema([                               
             
-            Forms\Components\Wizard\Step::make('experiencetab')->label(label:'Berufserfahrung editieren')->icon(icon:'heroicon-o-briefcase')
-                        ->schema([
-                            HasManyRepeater::make(name:'experiences')->label(label:'')->relationship('experiences')
-                           ->schema([
-                               Forms\Components\TextInput::make(name:'jname')->label(label:'Positionsbezeichnung')->minLength(2)->maxLength(255)->required(),
-                               Forms\Components\TextInput::make(name:'cnname')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
-                               Forms\Components\Textarea::make(name:'description')->label(label:'Beschreibung')->rows(3)
-                                   ->cols(20)->columnSpan(2),
-                               Forms\Components\Checkbox::make(name:'currentj')->label(label:'Bis heute')
-                                   ->afterStateUpdated(function (Closure $set, $state) {
-                                $set('finished_at', null);
-                                })->reactive()->nullable(),
-                               Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
-                               ->required()->columns(2) ->columnSpan(2),
-                               Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
-                               ->hidden(fn ($get) => $get('currentj'))
-                               ->nullable()->withoutTime()->columns(2) ->columnSpan(2),
-                           ])->orderable('sort')->columns(2) ->columnSpan(2) ->minItems(0)->createItemButtonLabel('+')                    
-                        ]),               
+            Forms\Components\Wizard\Step::make('educationtab')->label(label:'Bildungsweg editieren')->icon(icon:'heroicon-o-academic-cap')
+            ->schema([
+                Repeater::make(name:'educations')->label(label:'')->relationship('educations')
+                ->schema([
+                    
+                   Forms\Components\TextInput::make(name:'abschluss')->label(label:'Abschluss')->minLength(2)->maxLength(255)->required()->placeholder('z. B. Mittlere Reife oder Abitur'),
+                   Forms\Components\TextInput::make(name:'bildungseinrichtung')->label(label:'Bildungseinrichtung')->minLength(2)->maxLength(255)->required()->placeholder('Name der Schule'),
+                   Forms\Components\TextInput::make(name:'fachrichtung')->label(label:'Fachrichtung')->minLength(2)->maxLength(255),
+                   Forms\Components\TextInput::make(name:'orth')->label(label:'Ort')->minLength(2)->maxLength(255)->required(),                            
+                   Forms\Components\Checkbox::make(name:'currente')->label(label:'Bis heute')
+                        ->afterStateUpdated(function (Closure $set, $state) {
+                            $set('finished_at', null);
+                        })
+                        ->reactive()
+                        ->nullable(),
+                   Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
+                        ->required()->columns(2) ->columnSpan(2),
+                   Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
+                        ->hidden(fn ($get) => $get('currente'))
+                        ->nullable()
+                        ->withoutTime()->columns(2) ->columnSpan(2),
+                ])->orderable('sort')->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(2)->createItemButtonLabel('+')
+            
+            ]),
      
                            
                 
@@ -112,10 +118,9 @@ class ExperienceForm extends Component implements HasForms
             $this->form->getState(),
         );
     } 
- 
-
+    
     public function render()
     {
-        return view('livewire.profile.experience-form');
+        return view('livewire.profile.education-form');
     }
 }

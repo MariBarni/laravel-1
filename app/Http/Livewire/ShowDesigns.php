@@ -20,6 +20,7 @@ class ShowDesigns extends Component
     {
         if (Auth::check()){
             
+            $id = Auth::id();
             $profile=Profile::where(array('user_id' => $id))->first();
             $profileID=$profile->id;
           

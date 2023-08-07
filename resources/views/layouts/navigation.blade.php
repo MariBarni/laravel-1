@@ -1,14 +1,14 @@
 @guest
                 
 @else
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-indigo-900 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center  bg-indigo-900">
-                <a href="/extra" class="flex items-center">
+                <div class="shrink-0 flex items-center ">
+                <a href="route('dashboard')" :active="request()->routeIs('dashboard')" class="flex items-center">
                 <svg width="240" height="49" class="logo__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359 74">
                 <path id="stimme" fill="#ffffff" d="M268.3,49.6h37l4.5-11.4l-1.7-0.9c-4.7,5.5-11.6,9.9-19.2,9.9c-4.3,0-4.7-2.4-4.7-5.9v-13h1.4
                         c6,0,9.1,1.4,10.8,7.6h2.4V18.3h-2.4c-2.1,6.2-4.7,7.2-10.9,7.2h-1.2v-12c0-4.5,0-6.3,5.4-6.3c7,0,13.3,4.5,17.5,9.9l1.9-0.8
@@ -89,7 +89,9 @@
                 <div class="hidden px-3 space-x-8 sm:-my-px sm:ml-10 sm:flex">
                  
                     <x-nav-link :href="route('model.show', ['id' => Auth::user()->id])" :active="request()->routeIs('profile.show')">
+                    <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                         {{ __('Design') }}
+                        </button>
                     </x-nav-link>
                 
                 </div>
@@ -117,6 +119,12 @@
                         <x-dropdown-link :href="route('profile.experiences.show')">
                             {{ __('Meine Berufserfahrung') }}
                         </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.educations.show')">
+                            {{ __('Mein Bildungsweg') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('profile.languages.show')">
+                            {{ __('Meine Sprache') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -125,7 +133,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Abmelden') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

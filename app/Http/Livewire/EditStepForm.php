@@ -206,8 +206,7 @@ class EditStepForm extends Component implements HasForms
                                 'Gut' => 'Gut',
                                 'Fließend' => 'Fließend',
                                 'Muttersprache' => 'Muttersprache',
-                            ])
-                            ->required(),
+                            ])->required(),
                              
                             ])->columns(2) ->columnSpan(2) ->minItems(1)->createItemButtonLabel('+')->relationship('languages')  
                         

@@ -23,7 +23,7 @@ use App\Http\Livewire\LoginForm;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('form');
 });
 
 Route::get('/dashboard', function () {
@@ -44,22 +44,26 @@ Route::middleware('auth')->prefix('profile')->as('profile.')->group(function () 
     Route::get('/',ShowController::class)->name('show');
 
     Route::prefix('experiences')->as('experiences.')->group(function () {
-    Route::get('/', App\Http\Controllers\Profile\Experience\ShowController::class)->name('show');
+    Route::get('/', App\Http\Controllers\Profile\Experiences\ShowController::class)->name('show');
+    });
+
+    Route::prefix('educations')->as('educations.')->group(function () {
+    Route::get('/', App\Http\Controllers\Profile\Educations\ShowController::class)->name('show');
+    });
+
+    Route::prefix('languages')->as('languages.')->group(function () {
+    Route::get('/', App\Http\Controllers\Profile\Languages\ShowController::class)->name('show');
     });
  
-/*
-    Route::prefix('links')->as('links.')->group(function () {
-        Route::get('/', LinkShowController::class)->name('show');
-        Route::get('/{link:token}', TemplateShowController::class)->name('template');
-    });*/
+
 
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/extra', function () {
+/*Route::get('/extra', function () {
     return view('form');
-})->name('home');
+})->name('home');*/
 Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Profile\Experience;
+namespace App\Http\Controllers\Profile\Experiences;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class ShowController extends Controller
     {
         //
         return view('profile.experiences.show', [
-            'profile' => auth()->user()->load('profile.experiences'),
+            'user' => auth()->user()->load('profile.experiences'),
         ]);
     }
 }

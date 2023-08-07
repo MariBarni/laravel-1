@@ -11,6 +11,7 @@ class Experience extends Model
 
     public $table = 'experiences';
     
+    protected $guarded = [];
 
     protected $fillable=[
         'id',

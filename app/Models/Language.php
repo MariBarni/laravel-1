@@ -11,6 +11,8 @@ class Language extends Model
     
     public $table = 'languages';
 
+    protected $guarded = [];
+
     protected $fillable=[
         'id',
         'language',
