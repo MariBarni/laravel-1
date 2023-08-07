@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Model;
+
 
 
 class User extends Authenticatable implements FilamentUser
@@ -24,6 +26,7 @@ class User extends Authenticatable implements FilamentUser
         'name',
         'email',
         'password',
+        'is_admin'
     ];
 
     /**
@@ -57,4 +60,5 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->id;
     }
+   
 }
