@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProfileResource\Pages;
 use App\Filament\Resources\ProfileResource\RelationManagers;
+use Filament\Resources\RelationManagers\RelationGroup;
 use App\Models\Profile;
 use Filament\Forms;
 use Filament\Resources\Form;
@@ -114,6 +115,11 @@ class ProfileResource extends Resource
     {
         return [
             //
+            RelationGroup::make('Lebenslauf', [
+            RelationManagers\ExperiencesRelationManager::class,
+            RelationManagers\EducationsRelationManager::class,
+            RelationManagers\LanguagesRelationManager::class,
+            ]),
         ];
     }
     
