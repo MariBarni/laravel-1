@@ -1,7 +1,7 @@
   <!-- Header Navbar -->
   <nav class="fixed top-0 left-0 z-20 w-full border-b border-gray-200 bg-indigo-900 py-2.5 px-6 sm:px-4">
     <div class="container mx-auto flex max-w-6xl flex-wrap items-center justify-between">
-    <a href="/extra" class="flex items-center">
+    <a href="/" class="flex items-center">
       <svg width="240" height="49" class="logo__svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 359 74">
       <path id="stimme" fill="#ffffff" d="M268.3,49.6h37l4.5-11.4l-1.7-0.9c-4.7,5.5-11.6,9.9-19.2,9.9c-4.3,0-4.7-2.4-4.7-5.9v-13h1.4
                         c6,0,9.1,1.4,10.8,7.6h2.4V18.3h-2.4c-2.1,6.2-4.7,7.2-10.9,7.2h-1.2v-12c0-4.5,0-6.3,5.4-6.3c7,0,13.3,4.5,17.5,9.9l1.9-0.8

@@ -10,12 +10,13 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Notifications\Notification;
 
 
 class User extends Authenticatable implements FilamentUser
 {
     use HasApiTokens, HasFactory, Notifiable;
+  
 
     /**
      * The attributes that are mass assignable.
@@ -59,6 +60,14 @@ class User extends Authenticatable implements FilamentUser
     public function getId()
     {
         return $this->id;
+    }
+    public function routeNotificationForMail(Notification $notification): array|string
+    {
+        // Return email address only...
+        return $this->email_address;
+ 
+        // Return email address and password...
+        return [$this->email_address => $this->password];
     }
    
 }

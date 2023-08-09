@@ -9,6 +9,8 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
 
 
+
+
 class ShowDesigns extends Component
 {
     public $design;

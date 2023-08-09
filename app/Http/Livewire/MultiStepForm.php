@@ -42,6 +42,10 @@ use Carbon\Carbon;
 use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+
 
 
 class MultiStepForm extends Component implements HasForms
@@ -234,8 +238,11 @@ class MultiStepForm extends Component implements HasForms
        
 
             if(\Auth::attempt(array('email' => $proEmail, 'password' => $profile->token))){
-                //$profile=Profile::where(array('email' => $this->email,'token' => $this->token ))->first();
+                
                 $profile=Profile::where(array('email' => $proEmail))->first()->update(['user_id' => $user->id]);
+                $profile=Profile::where(array('email' => $proEmail ))->first();
+                Mail::to($proEmail)->send(new \App\Mail\Registrierung($profile));
+              
                 session()->flash('message', "You are Login successful.");
                 return redirect()->route('model.show', ['id' => $user->id]);
         }else{

@@ -6,10 +6,12 @@ use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\Profile\ShowController;
 
 use App\Http\Livewire\ProfileForm;
+ 
 use App\Http\Livewire\SessionForm;
 use App\Http\Livewire\ShowDesigns;
 use App\Http\Livewire\EditStepForm;
 use App\Http\Livewire\LoginForm;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +67,8 @@ require __DIR__.'/auth.php';
     return view('form');
 })->name('home');*/
 Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
+
+
 Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 
 Route::view('/anmelden','anmelden')->name('anmelden');
