@@ -16,7 +16,7 @@ return new class extends Migration
            
             $table->string('language')->nullable();
             $table->string('level')->nullable();
-            $table->foreignId('profile_id');            
+            $table->foreignId('profile_id')->references('id')->on('profiles')->cascadeOnDelete();      
             $table->timestamps();
         });
     }

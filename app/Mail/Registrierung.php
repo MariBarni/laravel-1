@@ -9,47 +9,37 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Profile;
+use Illuminate\Support\Facades\URL;
+
+
 
 class Registrierung extends Mailable
 {
     use Queueable, SerializesModels;
+    public $plaintextToken;
+    public $expiresAt;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(public Profile $profile, )
+    public function __construct($plaintextToken, $expiresAt)
     {
-        //
+      $this->plaintextToken = $plaintextToken;
+      $this->expiresAt = $expiresAt;
+    }
+  
+    public function build()
+    {
+      return $this->subject(
+        config('app.name') . ' Login Verification'
+      )->markdown('emails.registrierung', [
+        'url' => URL::temporarySignedRoute('verify-login', $this->expiresAt, [
+          'token' => $this->plaintextToken,
+        ]),'token' => $this->plaintextToken,'expires_at'=>$this->expiresAt,
+      ]);
     }
 
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Registrierung',
-        );
-    }
+   
 
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.registrierung'
-      
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
+  
 }

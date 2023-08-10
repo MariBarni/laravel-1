@@ -56,10 +56,15 @@ Route::middleware('auth')->prefix('profile')->as('profile.')->group(function () 
     Route::prefix('languages')->as('languages.')->group(function () {
     Route::get('/', App\Http\Controllers\Profile\Languages\ShowController::class)->name('show');
     });
- 
-
 
 });
+
+Route::group(['middleware' => ['guest']], function() {
+   
+    Route::get('/anmelden',[LoginForm::class, 'anmelden'])->name('anmelden');
+    Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
+    Route::get('verify-login/{token}', [LoginForm::class, 'verifyLogin'])->name('verify-login');
+  });
 
 require __DIR__.'/auth.php';
 
@@ -71,6 +76,5 @@ Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 
 Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
 
-Route::view('/anmelden','anmelden')->name('anmelden');
-Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
+
 

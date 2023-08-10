@@ -11,7 +11,11 @@ use Laravel\Sanctum\HasApiTokens;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notification;
-
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Registrierung;
+use App\Models\Profile;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -61,13 +65,12 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->id;
     }
-    public function routeNotificationForMail(Notification $notification): array|string
+    public function sendLoginLink()
     {
-        // Return email address only...
-        return $this->email_address;
- 
-        // Return email address and password...
-        return [$this->email_address => $this->password];
+        $profile =Profile::whereEmail($this->email)->first();
+        $plaintext=$profile->token;
+        $expires_at =  now()->addDays(7);        
+        Mail::to($this->email)->queue(new Registrierung($plaintext, $expires_at));
     }
    
 }

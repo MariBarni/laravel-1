@@ -44,6 +44,7 @@ use Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Livewire\TemporaryUploadedFile;
 
 
 
@@ -70,6 +71,7 @@ class MultiStepForm extends Component implements HasForms
     public null|string $land= null;
     public null|array $profileimg= null;
     public null|string $templa = null;
+   
     public $profileId;
     
     /* Experience Variables*/
@@ -112,7 +114,9 @@ class MultiStepForm extends Component implements HasForms
                         Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required()->maxLength(10),            
                         Forms\Components\TextInput::make(name:'ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
                         Forms\Components\TextInput::make(name:'land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
-                        FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(),
+                        FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required()->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                            return (string) str($file->getClientOriginalName())->prepend('custom-prefix-');
+                        }),
                        ]),
                     
                     Forms\Components\Wizard\Step::make('experiencetab')->label(label:'Berufserfahrung')->icon(icon:'heroicon-o-briefcase')
@@ -239,9 +243,10 @@ class MultiStepForm extends Component implements HasForms
 
             if(\Auth::attempt(array('email' => $proEmail, 'password' => $profile->token))){
                 
-                $profile=Profile::where(array('email' => $proEmail))->first()->update(['user_id' => $user->id]);
-                $profile=Profile::where(array('email' => $proEmail ))->first();
-                Mail::to($proEmail)->send(new \App\Mail\Registrierung($profile));
+                $profile=Profile::where(array('email' => $proEmail))->first()->update(['user_id' => $user->id,  'expires_at' => now()->addDays(7),]);
+                //$profile=Profile::where(array('email' => $proEmail ))->first();
+                //Mail::to($proEmail)->send(new \App\Mail\Registrierung($profile));
+                User::whereEmail($proEmail)->first()->sendLoginLink();
               
                 session()->flash('message', "You are Login successful.");
                 return redirect()->route('model.show', ['id' => $user->id]);

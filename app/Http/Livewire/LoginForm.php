@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Filament\Forms;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
+use App\Http\Livewire\Requests;
+use Illuminate\Http\Request;
 
 
 
@@ -59,6 +61,15 @@ class LoginForm extends Component implements Forms\Contracts\HasForms
         Auth::logout();
   
         return Redirect('/');
+    }
+    public function verifyLogin(Request $request, $token)
+    {
+      $profile = \App\Models\Profile::whereToken($token)->firstOrFail();
+
+      Auth::loginUsingId($profile->user_id);     
+      //Auth::login($profile->user);
+      $profile=Profile::where(array('token' => $token))->first();
+      return redirect()->route('model.show', ['id' => $profile->id]);
     }
 
     public function render()

@@ -28,8 +28,9 @@ return new class extends Migration
             $table->string('land')->nullable();
             $table->string('profileimg')->nullable();       
             $table->string('tags')->nullable(); 
-            $table->foreignId('user_id')->nullable();    
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();    
             $table->string('full_name')->virtualAs('concat(name, \' \', vorname)');
+            $table->timestamp('expires_at')->nullable();
             $table->timestamps();
         });
     }

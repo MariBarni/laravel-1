@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('started_at');
             $table->date('finished_at')->nullable();
             $table->integer('sort')->nullable();          
-            $table->foreignId('profile_id');   
+            $table->foreignId('profile_id')->references('id')->on('profiles')->cascadeOnDelete();   
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
-
+use Carbon\Carbon;
 
 class Profile extends Model
 {
@@ -39,8 +39,12 @@ class Profile extends Model
         'land',
        'profileimg',       
        'tags',
-       'user_id'
+       'user_id',
+       'expires_at'
     ];
+    protected $dates = [
+        'expires_at'
+      ];
     
     protected $casts = [
         'tags' => 'array',
@@ -72,8 +76,10 @@ class Profile extends Model
     {
         return $this->hasMany(Language::class);
     }
-  
- 
+
+
+
+
     
   
 }
