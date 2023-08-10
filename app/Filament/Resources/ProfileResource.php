@@ -22,8 +22,10 @@ use Filament\Forms\Components\TagsInput;
 class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
+    protected static ?string $navigationGroup = 'Lebenslauf';
+    protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-identification';
 
     public static function form(Form $form): Form
     {
@@ -129,6 +131,7 @@ class ProfileResource extends Resource
             'index' => Pages\ListProfiles::route('/'),
             'create' => Pages\CreateProfile::route('/create'),
             'edit' => Pages\EditProfile::route('/{record}/edit'),
+           
         ];
     }    
 }

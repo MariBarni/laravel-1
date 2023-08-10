@@ -39,6 +39,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/preview/{id}/{name}', [ResumeController::class, 'preview'])->name('preview.show');
     Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
+    Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
     
 });
 
@@ -56,12 +57,14 @@ Route::middleware('auth')->prefix('profile')->as('profile.')->group(function () 
     Route::prefix('languages')->as('languages.')->group(function () {
     Route::get('/', App\Http\Controllers\Profile\Languages\ShowController::class)->name('show');
     });
+   
 
 });
 
-Route::group(['middleware' => ['guest']], function() {
-   
-    Route::get('/anmelden',[LoginForm::class, 'anmelden'])->name('anmelden');
+Route::group(['middleware' => ['guest']], function() {   
+    Route::get('/anmelden', function () {
+        return view('anmelden');
+    })->name('anmelden');
     Route::get('/abmelden', [LoginForm::class, 'abmelden'])->name('abmelden');
     Route::get('verify-login/{token}', [LoginForm::class, 'verifyLogin'])->name('verify-login');
   });
@@ -71,10 +74,13 @@ require __DIR__.'/auth.php';
 /*Route::get('/extra', function () {
     return view('form');
 })->name('home');*/
-Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
 
 
-Route::get('/edit/{id}', EditStepForm::class)->name('model.edit');
+//Route::get('/anmelden',[LoginForm::class, 'anmelden'])->name('anmelden');
+
+
+
+
 
 
 

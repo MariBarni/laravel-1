@@ -18,8 +18,10 @@ use App\Models\Profile;
 class ExperienceResource extends Resource
 {
     protected static ?string $model = Experience::class;
+    protected static ?string $navigationGroup = 'Lebenslauf';
+    protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationIcon = 'heroicon-o-briefcase';
 
     public static function form(Form $form): Form
     {
