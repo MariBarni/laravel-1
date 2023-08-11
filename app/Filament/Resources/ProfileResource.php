@@ -6,6 +6,7 @@ use App\Filament\Resources\ProfileResource\Pages;
 use App\Filament\Resources\ProfileResource\RelationManagers;
 use Filament\Resources\RelationManagers\RelationGroup;
 use App\Models\Profile;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -18,6 +19,11 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TagsInput;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\ImageColumn;
+
 
 class ProfileResource extends Resource
 {
@@ -84,32 +90,35 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('vorname'),
-                Tables\Columns\TextColumn::make('wunschposition'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('handynummer'),
-                Tables\Columns\TextColumn::make('geburtstag'),
-                Tables\Columns\TextColumn::make('geburtsort'),
-                Tables\Columns\TextColumn::make('straße'),
-                Tables\Columns\TextColumn::make('plz'),
-                Tables\Columns\TextColumn::make('ort'),
-                Tables\Columns\TextColumn::make('land'),
-                Tables\Columns\TextColumn::make('profileimg'),
-                Tables\Columns\TextColumn::make('tags'),
-                Tables\Columns\TextColumn::make('token'),
-                Tables\Columns\TextColumn::make('created_at')
+                Split::make([ 
+                    Tables\Columns\ImageColumn::make('profileimg')->grow(false),
+                    Tables\Columns\TextColumn::make('name')->searchable(),
+                    Tables\Columns\TextColumn::make('vorname')->searchable(), 
+                ]),
+                Panel::make([
+                    Stack::make([
+                Tables\Columns\TextColumn::make('email')->icon(icon:'heroicon-o-mail')->searchable(),
+                Tables\Columns\TextColumn::make('handynummer')->icon(icon:'heroicon-o-phone'),              
+                Tables\Columns\TextColumn::make('ort')->icon(icon:'heroicon-o-home'),             
+                Tables\Columns\TextColumn::make('token')->icon(icon:'heroicon-o-hashtag'),
+                Tables\Columns\TextColumn::make('created_at')->icon(icon:'heroicon-o-clock')
                     ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
+                Tables\Columns\TextColumn::make('updated_at')->icon(icon:'heroicon-o-refresh')
                     ->dateTime(),
+                ]),
+                ])->collapsible(),
             ])
             ->filters([
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make(name:'Email_Token')->icon(icon:'heroicon-o-mail')->action(function(Profile $record){
+                    $proEmail=$record->email;
+                    User::whereEmail($proEmail)->first()->sendLoginLink();
+                }),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+                
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -134,6 +143,7 @@ class ProfileResource extends Resource
             'index' => Pages\ListProfiles::route('/'),
             'create' => Pages\CreateProfile::route('/create'),
             'edit' => Pages\EditProfile::route('/{record}/edit'),
+            'token' => Pages\TokenProfiles::route('/token'),
            
         ];
     }    

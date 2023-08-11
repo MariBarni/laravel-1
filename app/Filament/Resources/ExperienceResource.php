@@ -53,7 +53,7 @@ class ExperienceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('jname'),
                 Tables\Columns\TextColumn::make('cnname'),
-                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('description')->wrap(),
            
                 Tables\Columns\TextColumn::make('started_at')
                     ->date(),
