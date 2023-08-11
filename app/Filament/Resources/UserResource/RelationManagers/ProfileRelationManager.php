@@ -1,32 +1,19 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\UserResource\RelationManagers;
 
-use App\Filament\Resources\ProfileResource\Pages;
-use App\Filament\Resources\ProfileResource\RelationManagers;
-use Filament\Resources\RelationManagers\RelationGroup;
-use App\Models\Profile;
 use Filament\Forms;
 use Filament\Resources\Form;
-use Filament\Resources\Resource;
+use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TimePicker;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TagsInput;
 
-class ProfileResource extends Resource
+class ProfileRelationManager extends RelationManager
 {
-    protected static ?string $model = Profile::class;
-    protected static ?string $navigationGroup = 'Lebenslauf';
-    protected static ?int $navigationSort = 1;
+    protected static string $relationship = 'profile';
 
-    protected static ?string $navigationIcon = 'heroicon-o-identification';
- 
     
 
     public static function form(Form $form): Form
@@ -76,7 +63,6 @@ class ProfileResource extends Resource
                              'Web',
                              'Produktmanagement',
                          ])->columns(2) ->columnSpan(2),              
-              
             ]);
     }
 
@@ -84,28 +70,14 @@ class ProfileResource extends Resource
     {
         return $table
             ->columns([
-                
+                Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('vorname'),
-                Tables\Columns\TextColumn::make('wunschposition'),
-                Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('handynummer'),
-                Tables\Columns\TextColumn::make('geburtstag'),
-                Tables\Columns\TextColumn::make('geburtsort'),
-                Tables\Columns\TextColumn::make('straße'),
-                Tables\Columns\TextColumn::make('plz'),
-                Tables\Columns\TextColumn::make('ort'),
-                Tables\Columns\TextColumn::make('land'),
-                Tables\Columns\TextColumn::make('profileimg'),
-                Tables\Columns\TextColumn::make('tags'),
-                Tables\Columns\TextColumn::make('token'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime(),
             ])
             ->filters([
                 //
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -114,27 +86,5 @@ class ProfileResource extends Resource
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
             ]);
-    }
-    
-    public static function getRelations(): array
-    {
-        return [
-            //
-            RelationGroup::make('Lebenslauf', [
-            RelationManagers\ExperiencesRelationManager::class,
-            RelationManagers\EducationsRelationManager::class,
-            RelationManagers\LanguagesRelationManager::class,
-            ]),
-        ];
-    }
-    
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListProfiles::route('/'),
-            'create' => Pages\CreateProfile::route('/create'),
-            'edit' => Pages\EditProfile::route('/{record}/edit'),
-           
-        ];
     }    
 }
