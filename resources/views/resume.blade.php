@@ -307,3 +307,225 @@ hr {
 </body>
 </html>
 
+
+
+<!--
+<!doctype html>
+<html lang="de">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<style>
+ 
+ * {
+  box-sizing: border-box;
+}
+
+@page { margin: 0px; margin-right:40px;}
+body { margin: 0px; }
+
+html {
+    font-size: 14px;
+}
+
+body, p {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
+}
+
+.left {
+    width: 29%;
+    float: left;
+    min-height: 100vh;
+    height:100%;
+    background-color: #5C94B2;
+    color: #fff;
+}
+
+.left-item {
+    padding: 5px 25px;
+}
+
+.left-item ul {
+    padding: 0;
+    margin: 0;
+}
+
+.left-item li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.left li i {
+    color: #003856;
+    margin-right: 8px;
+}
+
+h3 {
+    border-bottom: 3px solid #003856;
+    display: inline-block;
+    line-height: 1.5;
+}
+
+.right {
+    float: left;
+    width: 71%;
+    padding: 0 40px;
+    padding-right: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 65px;
+    color: #003856;
+    margin-bottom: 0;
+    line-height: 0.7;
+}
+
+h2 {
+    margin: 0;
+    margin-bottom: 40px;
+    color: #5C94B2;
+    font-size: 30px;
+}
+
+.right h3 {
+    color: #003856;
+    border-bottom: 3px solid #5C94B2;
+    margin-bottom: 2px;
+}
+
+.subblock-title {
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.subblock-date {
+    color: #5C94B2;
+    margin-bottom: 20px;
+}
+
+.block {
+    margin-bottom: 30px;
+    margin-right: 40px;
+}
+
+.block-school .subblock-date, .block-school .subblock-text {
+    margin: 0;
+}
+
+.icon {
+    width:15px;
+    margin-right:5px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+    <div class="main">
+        <div class="left">
+            <img src="{{ asset('storage/'.$profile->profileimg) }}" >
+            <div class="left-item">
+                <h3>Persönliches</h3>
+                <ul>
+                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill.png') }}" >anja.mustermann@mail.de</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill.png') }}" >07131 61561</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill.png') }}" >Allee 2, 74072 Heilbronn</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill.png') }}" ></i>22.11.1983</li>
+                </ul>
+            </div>
+            <div class="left-item">
+                <h3>Fähigkeiten</h3>
+                <ul>
+                    <li>Marketingplanung</li>
+                    <li>Gesamtprojektplanung</li>
+                </ul>
+            </div>
+            <div class="left-item">
+                <h3>Sprachen</h3>
+                <ul>
+                    <li>Deutsch - Muttersprache</li>
+                    <li>Englisch - Gute Kenntnisse</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <div class="header">
+                <h1>Anja Mustermann</h1>
+                <h2>Projektmanagerin</h2>
+            </div>
+            <div class="block">
+                <h3>Berufserfahrung</h3>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                </div>
+            </div>
+
+            <div class="block block-school">
+                <h3>Bildungsweg</h3>
+                <div class="subblock">
+                    <p class="subblock-title">Master</p>
+                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
+                    <p class="subblock-text">Sozialwissenschaften</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Bachelor</p>
+                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
+                    <p class="subblock-text">Sozialwissenschaften</p>
+                </div>
+            </div>
+
+            <div class="signature">
+                <p>Heilbronn, 26.09.2020</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+-->
