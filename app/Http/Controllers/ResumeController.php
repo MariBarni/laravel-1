@@ -57,8 +57,10 @@ class ResumeController extends Controller
         $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
         $experiences=Experience::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
         $languages=Language::where('profile_id', $profileid)->get();
+        $timestamp = time();
+        $datum = date("d.m.Y", $timestamp);
         
-        return view($name)->with('profile', $profile)->with('experiences', $experiences)->with('educations', $educations)->with('languages', $languages);
+        return view($name)->with('profile', $profile)->with('experiences', $experiences)->with('educations', $educations)->with('languages', $languages)->with('datum', $datum);
         }else{
             return redirect()->to('/');
         }
@@ -72,7 +74,10 @@ class ResumeController extends Controller
         $profileid=$profile->id;
         $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
         $experiences=Experience::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
-        $languages=Language::where('profile_id', $profileid)->get();         
+        $languages=Language::where('profile_id', $profileid)->get();      
+        $timestamp = time();
+        $datum = date("d.m.Y", $timestamp);
+  
 
         $pdf = \App::make('dompdf.wrapper');  
       
@@ -85,7 +90,8 @@ class ResumeController extends Controller
            $pdf = PDF::loadView($name, ['profile' => $profile,
            'educations'=>$educations,
            'experiences'=>$experiences,
-           'languages'=>$languages])->setOptions(['defaultFont' => 'sans-serif']);
+           'languages'=>$languages,
+           'datum' => $datum])->setOptions(['defaultFont' => 'sans-serif']);
 
         
         // Output the generated PDF to Browser
