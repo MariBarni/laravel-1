@@ -23,7 +23,7 @@
 body { margin: 0px; }
 
 html {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 body, p {
@@ -93,7 +93,7 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 65px;
+    font-size: 45px;
     color: #003856;
     margin-bottom: 0;
     line-height: 0.7;
@@ -109,7 +109,7 @@ h2 {
 .right h3 {
     color: #003856;
     border-bottom: 3px solid #5C94B2;
-    margin-bottom: 2px;
+    margin-bottom:0;
 }
 
 .subblock-title {

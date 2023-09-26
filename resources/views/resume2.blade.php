@@ -19,11 +19,11 @@
   box-sizing: border-box;
 }
 
-@page { margin: 0px; margin-right:40px;}
+@page { margin: 0px; margin-right:80px;}
 body { margin: 0px; }
 
 html {
-    font-size: 14px;
+    font-size: 12px;
     color: #605C56;
 }
 
@@ -86,6 +86,7 @@ h3 {
     padding-right: 0;
 }
 
+
 img {
     max-width: 100%;
 }
@@ -98,7 +99,7 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 65px;
+    font-size: 45px;
     color: #8B8986;
     margin-bottom: 0;
     line-height: 1;
@@ -112,7 +113,7 @@ h2 {
 }
 
 .right h3 {
-    margin-bottom: 2px;
+    margin-bottom:0;
     background: #EBE7DE;
     width: 100%;
     padding: 10px 15px;

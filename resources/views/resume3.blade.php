@@ -6,306 +6,262 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+
+
 <style>
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 400;
-    margin: 10px 0;
-}
-h1 {
-    font-size: 36px
+ 
+ * {
+  box-sizing: border-box;
 }
 
-h2 {
-    font-size: 30px
+@page { margin: 0px; margin-right:40px;}
+body { margin: 0px; }
+
+html {
+    font-size: 10px;
+    color: #949494;
+}
+
+body, p {
+    margin: 0;
+    padding: 0;
+}
+
+.main {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: lightgray;
+   font-family: 'Libre Baskerville', serif;
+}
+
+.left {
+    width: 29%;
+    float: left;
+    min-height: 100vh;
+    height:100%;
+    background-color: #E5E5E5;
+    font-weight: bold;
+}
+
+.left-item {
+    padding: 5px 25px;
+}
+
+.left-item ul {
+    padding: 0;
+    margin: 0;
+}
+
+.left-item li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.left li i {
+    color: #003856;
+    margin-right: 8px;
 }
 
 h3 {
-    font-size: 24px
-}
-
-h4 {
-    font-size: 20px
-}
-
-h5 {
-    font-size: 18px
-}
-
-h6 {
-    font-size: 16px
-}
-b, strong {
-    font-weight: bolder;
-}
-     img {
-        border-style: none;
-        max-width: 100%;
-        height: auto;
-        
-        overflow: hidden;
-    }
-    p {
-    
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-}
-footer {
-   
-    position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-
-}
-.w3-light-grey, .w3-hover-light-grey:hover, .w3-light-gray, .w3-hover-light-gray:hover {
-    color: #000!important;
-    background-color: #f1f1f1!important;
-}
-.w3-card-4, .w3-hover-shadow:hover {
-    box-shadow: 0 4px 10px 0 rgba(0,0,0,0.2), 0 4px 20px 0 rgba(0,0,0,0.19);
-}
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-body {
-    margin: 0;
-    display: block;
-}
-.w3-margin-top {
-    margin-top: 16px!important;
-}
-.w3-content, .w3-auto {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-.w3-row-padding, .w3-row-padding>.w3-half, .w3-row-padding>.w3-third, .w3-row-padding>.w3-twothird, .w3-row-padding>.w3-threequarter, .w3-row-padding>.w3-quarter, .w3-row-padding>.w3-col {
-    padding: 0 6px;  
-}
-
-.w3-col.m4, .w3-third {
-    width: 35%;
-}
-
-.w3-col.m8, .w3-twothird {
-    width: 60%;
-}
-.w3-col, .w3-half, .w3-third, .w3-twothird, .w3-threequarter, .w3-quarter {
-    float: left;    
-}
-.w3-large {
-    font-size: 18px!important;
-}
-.w3-tooltip, .w3-display-container {
-    position: relative;
-    box-sizing: inherit;
-}
-
-.w3-text-black, .w3-hover-text-black:hover {
-    color: #000!important;
-}
-
-.w3-container, .w3-panel {
-    padding: 0.01em 14px;
-}
-.w3-margin-bottom {
-    margin-bottom: 16px!important;
-}
-.w3-margin-right {
-    margin-right: 16px!important;
-}
-.w3-margin-top {
-    margin-top: 16px!important
-}
-.w3-display-bottomleft {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-}
-.w3-text-grey, .w3-hover-text-grey:hover, .w3-text-gray, .w3-hover-text-gray:hover {
-    color: #757575!important;
-}
-.w3-text-teal, .w3-hover-text-teal:hover {
-    color: #009688!important;
-}
-.w3-opacity, .w3-hover-opacity:hover {
-    opacity: 0.60;
-}
-.w3-xxlarge {
-    font-size: 36px!important;
-}
-.w3-padding-16 {
-    padding-top: 16px!important;
-    padding-bottom: 16px!important;
-}
-.w3-text-black, .w3-hover-text-black:hover {
-    color: #000!important;
-}
-.w3-white, .w3-hover-white:hover {
-    color: #000!important;
-    background-color: #fff!important;
-}
-.w3-sand,.w3-hover-sand:hover{
-    color:#000!important;background-color:#fdf5e6!important
-}
-hr {
-    border: 0;
-    border-top: 1px solid #eee;
-    margin: 20px 0;
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-}
-.w3-teal, .w3-hover-teal:hover {
-    color: #fff!important;
-    background-color: #009688!important;
-}
-.w3-center {
-    text-align: center!important;
-}
-.fa {
+    color: #605C56;
     display: inline-block;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 1.28571429em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.right {
+    float: left;
+    width: 71%;
+    padding: 0 40px;
+    padding-right: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2 {
+   font-family: 'Libre Baskerville', serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+h1 {
+    font-size: 16px;
+    color: #656565;
+    margin-bottom: 0;
+    line-height: 1.2;
     text-align: center;
-}
-.fa-envelope-o:before {
-    content: "\f003"
-}
-.fa-star:before {
-    content: "\f005"
-}
-.fa-star-o:before {
-    content: "\f006"
-}
-.fa-home:before {
-    content: "\f015"
-}
-.fa-tag:before {
-    content: "\f02b"
-}
-.fa-calendar:before {
-    content: "\f073"
-}
-.fa-birthday-cake:before {
-    content: "\f1fd"
+    margin-top: 50px;
+    hyphens: auto;
+    word-wrap: break-word;
 }
 
-.fa-globe:before {
-    content: "\f0ac"
+h2 {
+    margin: 0;
+    margin-bottom: 40px;
+    color: #949494;
+    font-size: 30px;
 }
-.fa-graduation-cap:before {
-    content: "\f19d"
+
+.header h2 {
+    text-align: center;
+    font-size: 12px;
+    hyphens: auto;
+    word-wrap: break-word;
 }
+
+.right h3 {
+    margin-bottom:0;
+}
+
+.header {
+    padding: 0px 10px;
+}
+
+
+.subblock-title {
+    font-weight: bold;
+    margin-top: 30px;
+    color: #605C56;
+}
+
+.subblock-date {
+    color: #8B8986;
+    margin-bottom: 20px;
+}
+
+.block {
+    margin-bottom: 30px;
+    margin-right: 40px;
+}
+
+.block-school .subblock-date, .block-school .subblock-text {
+    margin: 0;
+}
+
+.icon {
+    width:15px;
+    margin-right:5px;
+}
+
+.line {
+    width: 140px;
+    height: 1px;
+    background-color: #bebebe;
+    margin: 20px auto;
+}
+
+.line-left {
+    margin: 20px 25px;
+}
+
+.signature {
+    text-align: right;
+    margin-bottom: 160px;
+    margin-top: 20px;
+    margin-right: 25px;
+}
+
+.greeting {
+    margin-top: 50px;
+}
+
 </style>
+
 </head>
-<body class="w3-light-grey">
+<body>
 
-<!-- Page Container -->
-<div class="w3-content w3-margin-top" style="max-width:1200px;  min-height: 80%;">
+    <div class="main">
 
-  <!-- The Grid -->
-  <div class="w3-row-padding">
-  
-    <!-- Left Column -->
-    <div class="w3-third">
-    
-      <div class="w3-sand w3-text-grey w3-card-4">
-      <div class="w3-display-container">
+        <div class="left">
+
+            <div class="header">
+                <h1>Anja Mustermann</h1>
+                <div class="line"></div>
+                <h2>Projektmanagerin</h2>
+            </div>
+
             <img src="{{ asset('storage/'.$profile->profileimg) }}" >
-            
-               
-                <div class="w3-container w3-text-black">
-          
-
-                    <h2>{{$profile->vorname}}  {{$profile->name}}</h2>
+            <div class="left-item">
+                <h3>Persönliches</h3>
+                <ul>
+                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill-3.png') }}" >anja.mustermann@mail.de</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-3.png') }}" >07131 61561</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-3.png') }}" >Allee 2, 74072 Heilbronn</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-3.png') }}" ></i>22.11.1983</li>
+                </ul>
+            </div>
+            <div class="line line-left"></div>
+            <div class="left-item">
+                <h3>Fähigkeiten</h3>
+                <ul>
+                    <li>Marketingplanung</li>
+                    <li>Gesamtprojektplanung</li>
+                </ul>
+            </div>
+            <div class="line line-left"></div>
+            <div class="left-item">
+                <h3>Sprachen</h3>
+                <ul>
+                    <li>Deutsch - Muttersprache</li>
+                    <li>Englisch - Gute Kenntnisse</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <div class="signature">
+                <p>Heilbronn, 26.09.2020</p>
+            </div>
+            <div class="block">
+                <h3>Berufserfahrung</h3>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Projektmanagerin</p>
+                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
+                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
                 </div>
             </div>
-            <div class="w3-container">
-            @if ($profile->wunschposition == null)
-            @else
-                <p><i class="fa fa-briefcase w3-margin-right w3-large w3-text-black"></i>{{$profile->wunschposition}}</p>
-                @endif
-                <p><i class=" fa fa-home w3-margin-right w3-large w3-text-black"></i> {{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</p>
-                <p><i class=" fa fa-envelope-o w3-margin-right w3-large w3-text-black"></i> {{$profile->email}}</p>
-                @if ($profile->handynummer == null)
-            @else
-                <p><i class="fa fa-phone w3-margin-right w3-large w3-text-black"></i>{{$profile->handynummer}}</p>
-                @endif
-                @if ($profile->geburtstag == null)
-            @else
-                <p><i class=" fa fa-birthday-cake w3-margin-right w3-large w3-text-black"></i>{{$profile->geburtstag}}</p>
-                @endif
-                <hr>
-                @if (count($profile->tags) > 0)
-                <p class="w3-large"><b><i class="fa fa-star-o  w3-margin-right w3-text-black"></i>Fähigkeiten</b></p>
-                @foreach($profile->tags as $e)
-                <p> {{$e}} </p>
-                @endforeach                   
-                <br>
-                <hr>
-                @else
-                @endif
-                <p class="w3-large "><b><i class="fa fa-globe w3-margin-right w3-text-black"></i>Sprachen</b></p>
-                @foreach($languages as $lan)                        
-                <p>{{$lan->language}}  {{$lan->level}} </p>
-                @endforeach         
-                <br>
-            </div>
-      </div>
-     
 
-    <!-- End Left Column -->
-    </div>
-
-    <!-- Right Column -->
-    <div class="w3-twothird">
-    <!-- Beruferfahrungen .- kann leer Sein -->
-    @if (count($experiences) > 0)
-      <div class="w3-container w3-card w3-white w3-margin-bottom">
-            <h2 class="w3-text-grey w3-sand "><i class="fa fa-suitcase w3-margin-right w3-xxlarge w3-text-black ">
-</i>Beruferfahrungen</h2>
-            @foreach ($experiences as $exp)
-            <div class="w3-container">
-                <h5 class="w3-opacity"><b>{{$exp->jname}} / {{$exp->cnname}}</b></h5>
-                <h6 class="w3-text-grey "><i class="fa fa-calendar  w3-margin-right"></i>{{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</h6>
-                <p>{{$exp->description}}</p>
-                <hr>
+            <div class="block block-school">
+                <h3>Bildungsweg</h3>
+                <div class="subblock">
+                    <p class="subblock-title">Master</p>
+                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
+                    <p class="subblock-text">Sozialwissenschaften</p>
+                </div>
+                <div class="subblock">
+                    <p class="subblock-title">Bachelor</p>
+                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
+                    <p class="subblock-text">Sozialwissenschaften</p>
+                </div>
             </div>
-            @endforeach  
-           
-      </div>
-    @else
-    @endif
-     <!-- End of Beruferfahrungen --> 
-    <!-- Bildungsweg  -->   
-      <div class="w3-container w3-card w3-white">
-        <h2 class="w3-text-grey w3-padding-16 w3-sand"><i class="fa fa-graduation-cap w3-margin-right w3-xxlarge w3-text-black "></i>Bildungsweg</h2>
-        @foreach ($educations as $edu)
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>{{$edu->abschluss}} / {{$edu->bildungseinrichtung}} </b></h5>
-          <h6 class="w3-text-grey "><i class="fa fa-calendar  w3-margin-right"></i>{{$edu->started_at->format('d/m/Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d/m/Y') }} @endif</h6>
-          <p>{{$edu->fachrichtung}}</br>{{$edu->orth}}</p>
-          <hr>
+
+            
+            <div class="greeting">Mit freundlichen Grüßen,</div>
+
+
         </div>
-        @endforeach 
-        
-      </div>
-
-    <!-- End Right Column -->
     </div>
-    
-  <!-- End Grid -->
-  </div>
-  <!-- End Page Container -->
-</div>
 
 </body>
 </html>
