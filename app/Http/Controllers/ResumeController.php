@@ -47,7 +47,13 @@ class ResumeController extends Controller
     }*/
    
 
-      public function preview($id, $name) {
+        public function script()
+        {
+            
+
+        }
+
+        public function preview($id, $name) {
         if (Auth::check())
         {
         $user = auth()->user();
