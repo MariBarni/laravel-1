@@ -155,15 +155,15 @@ h2 {
             <div class="left-item">
                 <h3>Persönliches</h3>
                 <ul>
-                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill.png') }}" >{{$profile->email}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill-2.png') }}" >{{$profile->email}}</li>
                      @if ($profile->handynummer == null)
                      @else
-                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill.png') }}" >{{$profile->handynummer}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-2.png') }}" >{{$profile->handynummer}}</li>
                     @endif
-                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill.png') }}" >{{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-2.png') }}" >{{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</li>
                     @if ($profile->geburtstag == null)
                     @else
-                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill.png') }}" ></i>{{$profile->geburtstag}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-2.png') }}" ></i>{{$profile->geburtstag}}</li>
                      @endif
                 </ul>
             </div>
