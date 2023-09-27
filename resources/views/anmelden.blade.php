@@ -24,7 +24,7 @@
 
     <body class="antialiased bg-white"> 
    
-        @include('layouts/navigationHome')
+        @include('layouts/navigation')
     
   
         <livewire:login-form>

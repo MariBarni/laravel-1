@@ -24,6 +24,7 @@ use App\Http\Livewire\LoginForm;
 |
 */
 
+
 Route::get('/', function () {
     return view('form');
 });
@@ -40,7 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/preview/{id}/{name}', [ResumeController::class, 'preview'])->name('preview.show');
     Route::get('/download/{id}/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
     Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
-    Route::get('/script', [ResumeController::class, 'script'])->name('profiles.script');
+    
     
 });
 
@@ -61,6 +62,10 @@ Route::middleware('auth')->prefix('profile')->as('profile.')->group(function () 
    
 
 });
+Route::middleware('auth')->prefix('settings')->as('settings.')->group(function () {
+    Route::get('/',ShowController::class)->name('show');  
+
+});
 
 Route::group(['middleware' => ['guest']], function() {   
     Route::get('/anmelden', function () {
@@ -76,8 +81,11 @@ require __DIR__.'/auth.php';
     return view('form');
 })->name('home');*/
 
+Route::get('/login', function () {
+    return view('anmelden');
+});
 
-//Route::get('/anmelden',[LoginForm::class, 'anmelden'])->name('anmelden');
+Route::get('/script', [ResumeController::class, 'script'])->name('profiles.script');
 
 
 

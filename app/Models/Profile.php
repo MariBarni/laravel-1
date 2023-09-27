@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+
 
 class Profile extends Model
 {
@@ -78,10 +81,7 @@ class Profile extends Model
     {
         return $this->hasMany(Language::class);
     }
-
-
-
-
+    
     
   
 }

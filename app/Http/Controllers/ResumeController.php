@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\Design;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Carbon;
 
 
 //use PDF;
@@ -45,13 +47,56 @@ class ResumeController extends Controller
         $pdf = \PDF::loadView('resume', compact('profile'))->setPaper('a4', 'portrait');
         return $pdf->download('resume.pdf');
     }*/
-   
-
+ 
         public function script()
         {
-            
+        
+         //delete expired records 
+         $date  = Carbon::now();
+         $profiles = Profile::where('expires_at', '<', $date )->get();
+         foreach($profiles as $prof){
+            $bild=$prof->profileimg;           
+            //Storage::move( "public/{$bild}", "public/new/{$bild}/");
+            Storage::delete( "public/{$bild}/");  
+            $user_pr=$prof->user_id;            
+            User::where('id', '=', $user_pr )->delete();
+
+         }
+
+   
+           /* $bild=$prof->profileimg;
+            $path = Storage::path($bild);
+            Storage::delete($bild);
+            $user_pr=$prof->user_id;
+            User::where('id', '=', $user_pr )->delete();*/
 
         }
+   
+       
+
+        // ->delete();        
+
+      /*
+        //delete records older than 1 hour
+            $date  = Carbon::now()->subMinutes( 60 );
+            Profile::where('created_at',  '<=', $date )->delete();
+            Education::where('created_at',  '<=', $date )->delete();
+            Experience::where('created_at',  '<=', $date )->delete();
+            Language::where('created_at', '<=', $date )->delete();    
+
+            //delete photos older than 1 hour
+            $files = collect( Storage::files("public"));
+            $files->each(function ($file) {
+                $lastModified = Storage::lastModified($file);
+                $lastModified = Carbon::parse($lastModified);
+
+                if (Carbon::now()->gt($lastModified->addHour(1))) {
+                    Storage::delete($file);
+                }
+            }
+      */
+
+      
 
         public function preview($id, $name) {
         if (Auth::check())
