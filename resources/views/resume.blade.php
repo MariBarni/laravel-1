@@ -32,7 +32,7 @@ body, p {
 }
 
 .main {
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     background-color: lightgray;
@@ -136,6 +136,10 @@ h2 {
     margin-right:5px;
 }
 
+.headimg {
+    width:100%;
+}
+
 
 </style>
 
@@ -144,7 +148,7 @@ h2 {
 
     <div class="main">
         <div class="left">
-            <img src="{{ asset('storage/'.$profile->profileimg) }}" >
+            <img  class="headimg" src="{{ asset('storage/'.$profile->profileimg) }}" >
             <div class="left-item">
                 <h3>Persönliches</h3>
                 <ul>
@@ -196,7 +200,7 @@ h2 {
                 <h3>Berufserfahrung</h3>
                  @foreach ($experiences as $exp)
                 <div class="subblock">
-                    <p class="subblock-title">{{$exp->jname}}  </p>
+                    <p class="subblock-title">{{$exp->jname}}</p>
                     <p class="subblock-date">{{$exp->cnname}} // {{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</p>
                     <p class="subblock-text">{{$exp->description}}</p>
                 </div>

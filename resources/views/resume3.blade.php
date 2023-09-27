@@ -177,6 +177,11 @@ h2 {
     margin-top: 50px;
 }
 
+.headimg {
+    width:100%;
+}
+
+
 </style>
 
 </head>
@@ -187,73 +192,83 @@ h2 {
         <div class="left">
 
             <div class="header">
-                <h1>Anja Mustermann</h1>
+                <h1>{{$profile->vorname}}  {{$profile->name}}</h1>
                 <div class="line"></div>
-                <h2>Projektmanagerin</h2>
+                @if ($profile->wunschposition == null)
+                @else
+                <h2>{{$profile->wunschposition}}</h2>
+                @endif
             </div>
 
-            <img src="{{ asset('storage/'.$profile->profileimg) }}" >
+            <img class="headimg" src="{{ asset('storage/'.$profile->profileimg) }}" >
             <div class="left-item">
                 <h3>Persönliches</h3>
                 <ul>
-                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill-3.png') }}" >anja.mustermann@mail.de</li>
-                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-3.png') }}" >07131 61561</li>
-                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-3.png') }}" >Allee 2, 74072 Heilbronn</li>
-                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-3.png') }}" ></i>22.11.1983</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/envelope-fill-3.png') }}" >{{$profile->email}}</li>
+                    @if ($profile->handynummer == null)
+                     @else
+                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-3.png') }}" >{{$profile->handynummer}}</li>
+                    @endif
+                    <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-3.png') }}" >{{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</li>
+                    @if ($profile->geburtstag == null)
+                    @else
+                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-3.png') }}" ></i>{{$profile->geburtstag}}</li>
+                    @endif
                 </ul>
             </div>
             <div class="line line-left"></div>
+            @if (count($profile->tags) > 0)
             <div class="left-item">
                 <h3>Fähigkeiten</h3>
                 <ul>
-                    <li>Marketingplanung</li>
-                    <li>Gesamtprojektplanung</li>
+                @foreach($profile->tags as $e)
+                    <li>{{$e}}</li>    
+                @endforeach           
                 </ul>
             </div>
+            @else
+            @endif
+
             <div class="line line-left"></div>
             <div class="left-item">
                 <h3>Sprachen</h3>
                 <ul>
-                    <li>Deutsch - Muttersprache</li>
-                    <li>Englisch - Gute Kenntnisse</li>
+                @foreach($languages as $lan)
+                    <li>{{$lan->language}} - {{$lan->level}}</li>
+                @endforeach 
                 </ul>
             </div>
         </div>
         <div class="right">
             <div class="signature">
-                <p>Heilbronn, 26.09.2020</p>
+            <p>Heilbronn, {{$datum}}</p>
             </div>
+
+            @if (count($experiences) > 0)
             <div class="block">
                 <h3>Berufserfahrung</h3>
+                @foreach ($experiences as $exp)
                 <div class="subblock">
-                    <p class="subblock-title">Projektmanagerin</p>
-                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
-                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                </div>
-                <div class="subblock">
-                    <p class="subblock-title">Projektmanagerin</p>
-                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
-                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                </div>
-                <div class="subblock">
-                    <p class="subblock-title">Projektmanagerin</p>
-                    <p class="subblock-date">Mustermann & Co. KG // Januar 2019 - heute</p>
-                    <p class="subblock-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.</p>
-                </div>
+                    <p class="subblock-title">{{$exp->jname}}</p>
+                    <p class="subblock-date">{{$exp->cnname}} // {{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</p>
+                    <p class="subblock-text">{{$exp->description}}</p>
+                </div>     
+                @endforeach              
             </div>
+            @else
+            @endif
 
             <div class="block block-school">
                 <h3>Bildungsweg</h3>
+                @foreach ($educations as $edu)
                 <div class="subblock">
-                    <p class="subblock-title">Master</p>
-                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
-                    <p class="subblock-text">Sozialwissenschaften</p>
+                    <p class="subblock-title">{{$edu->abschluss}}</p>
+                    <p class="subblock-date">{{$edu->bildungseinrichtung}} // {{$edu->started_at->format('d/m/Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d/m/Y') }} @endif</p>
+                    <p class="subblock-text">{{$edu->fachrichtung}}</p>
+                    <p class="subblock-text">{{$edu->orth}}</p>
                 </div>
-                <div class="subblock">
-                    <p class="subblock-title">Bachelor</p>
-                    <p class="subblock-date">Freie Universität Berlin // 2001</p>
-                    <p class="subblock-text">Sozialwissenschaften</p>
-                </div>
+                @endforeach    
+             
             </div>
 
             

@@ -33,7 +33,7 @@ body, p {
 }
 
 .main {
-    max-width: 1200px;
+    max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     background-color: lightgray;
@@ -144,6 +144,11 @@ h2 {
     margin-right:5px;
 }
 
+.headimg {
+    width:100%;
+}
+
+
 
 </style>
 
@@ -152,7 +157,7 @@ h2 {
 
     <div class="main">
         <div class="left">
-            <img src="{{ asset('storage/'.$profile->profileimg) }}" >
+            <img class="headimg" src="{{ asset('storage/'.$profile->profileimg) }}" >
             <div class="left-item">
                 <h3>Persönliches</h3>
                 <ul>
