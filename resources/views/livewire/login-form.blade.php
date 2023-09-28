@@ -6,9 +6,9 @@
             <div class="flex items-center w-full max-w-md px-6 mx-auto md:w-2/3">
                 <div class="flex-1">
                     <div class="text-center">
-                        <h2 class="text-4xl font-bold text-center text-gray-700">Brand</h2>
+                        <h2 class="text-4xl font-bold text-center text-gray-700">Lebenslauf</h2>
                         
-                        <p class="mt-3 text-gray-500">Sign in to access your account</p>
+                        <p class="mt-3 text-gray-500">Nun loggen Sie sich in Ihren Account mit einem von uns zugesandten Password/Token ein</p>
                     </div>
 
                     <div class="mt-8">

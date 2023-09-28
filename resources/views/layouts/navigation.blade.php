@@ -39,7 +39,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center ">
-                <a href="/dashboard"  class="flex items-center">
+                <a href="#"  class="flex items-center">
                         <img class="logo" src="{{ asset('storage/icons/logo.png') }}" style="max-width:180px;"  alt="Logo">
                   </a>
                 </div>
