@@ -7,13 +7,13 @@
   <p> Oder melden Sie sich mit Ihrem Email Adresse als Benutzername und den Register Code als Kenntwort.
 
 <div>
-Register Code:{{ $token }}
+Register Code: {{ $token }}
 </div>
 
 Dieser Link ist nur bis zum {{ $expires_at }} gültig. Danach müssen Sie die Registrierung für Ihre Lebenslauf erneut durchführen. Ihr bisherige Daten werden dann gelöscht.
 Hinweis: Sollte der Link nicht funktionieren, rufen Sie bitte die Webseite "" auf.</p>
 <p>Es grüßt Sie herzlich</p>
 
-<p>Ihr Stimme.de-Team.</p>
+<p>Ihr Mein-Sprungbrett.de-Team.</p>
 @endcomponent
                       
