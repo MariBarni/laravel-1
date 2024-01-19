@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('token');
             $table->string('name');
             $table->string('vorname');
-            $table->string('wunschposition')->nullable();
+            $table->string('identifikation')->nullable();
             $table->string('email')->unique()->nullable();
-            $table->string('handynummer')->nullable();
+            $table->string('telefonnummer')->nullable();
             $table->string('geburtstag')->nullable();
             $table->string('geburtsort')->nullable();
             $table->string('straße')->nullable();

@@ -104,11 +104,14 @@ class MultiStepForm extends Component implements HasForms
                    Forms\Components\Wizard\Step::make('profile')->label(label:'Persönliche Daten')->icon(icon:'heroicon-o-user')
                     ->schema([           
                         Forms\Components\TextInput::make('name')->minLength(2)->maxLength(255)->required(),            
-                        Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),                
-                        Forms\Components\TextInput::make(name:'wunschposition')->label(label:'Wunschposition')->minLength(2)->maxLength(255)->columnSpan('full'),                  
+                        Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),
+                        Forms\Components\Select::make('identifikation')->options(
+                            ['Männlich' => 'Männlich',
+                            'Weiblich' => 'Weiblich',
+                            'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(),                            
                         Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
-                        Forms\Components\TextInput::make('handynummer')->tel()->numeric(),               
-                        Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d/m/Y')->minDate(now()->subYears(120))->maxDate(now())->format('d/m/Y'),    
+                        Forms\Components\TextInput::make('telefonnummer')->tel()->alphaDash(),               
+                        Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->default(now())->displayFormat('d.m.Y')->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
                         Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
                         Forms\Components\TextInput::make('straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
                         Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required()->maxLength(10),            
@@ -123,7 +126,7 @@ class MultiStepForm extends Component implements HasForms
                     ->schema([
                         Repeater::make(name:'experiences')->label(label:'')
                        ->schema([
-                           Forms\Components\TextInput::make(name:'jname')->label(label:'Positionsbezeichnung')->minLength(2)->maxLength(255)->required(),
+                           Forms\Components\TextInput::make(name:'jname')->label(label:'Praktika, Nebenjobs oder Festanstellung ')->minLength(2)->maxLength(255)->required(),
                            Forms\Components\TextInput::make(name:'cnname')->label(label:'Unternehmen')->minLength(2)->maxLength(255)->required(),
                            Forms\Components\Textarea::make(name:'description')->label(label:'Beschreibung')->rows(3)
                                ->cols(20)->columnSpan(2),
@@ -160,7 +163,7 @@ class MultiStepForm extends Component implements HasForms
                                 ->hidden(fn ($get) => $get('currente'))
                                 ->nullable()
                                 ->withoutTime()->columns(2) ->columnSpan(2),
-                        ])->orderable()->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(2)->createItemButtonLabel('+')->relationship('educations')
+                        ])->orderable()->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(1)->createItemButtonLabel('+')->relationship('educations')
                     
                     ]),
 
@@ -203,7 +206,7 @@ class MultiStepForm extends Component implements HasForms
                 wire:target="submit" class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 
                 font-medium rounded-lg border outline-none min-h-[2rem] px-3 text-sm text-white shadow border-transparent bg-primary-600 type="submit">
                 <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
-                <span>Vorschau</span></button>
+                <span>Speichern und weiter</span></button>
                 <span
                 wire:loading.inline-flex
                 wire:target="submit"

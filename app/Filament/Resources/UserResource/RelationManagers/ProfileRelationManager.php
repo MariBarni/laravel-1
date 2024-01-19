@@ -26,18 +26,20 @@ class ProfileRelationManager extends RelationManager
                 Forms\Components\TextInput::make('vorname')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('wunschposition')
-                    ->maxLength(255),
+                Forms\Components\Select::make('identifikation')->options(
+                        ['Männlich' => 'Männlich',
+                        'Weiblich' => 'Weiblich',
+                        'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(), 
                 Forms\Components\TextInput::make('email')
                     ->required()
                     ->email()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('handynummer')
+                Forms\Components\TextInput::make('telefonnummer')
                     ->maxLength(255),
                 Forms\Components\DatePicker::make(name:'geburtstag')
                     ->label(label:'Geburtstag')
-                    ->displayFormat('d/m/Y')
-                    ->minDate(now()->subYears(120))->maxDate(now())->format('d/m/Y'),    
+                    ->displayFormat('d.m.Y')
+                    ->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
                 Forms\Components\TextInput::make('geburtsort')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('straße')

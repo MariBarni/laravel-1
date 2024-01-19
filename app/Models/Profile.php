@@ -33,9 +33,9 @@ class Profile extends Model
         'token',
         'name',
         'vorname',
-        'wunschposition',
+        'identifikation',
        'email',
-       'handynummer',
+       'telefonnummer',
         'geburtstag',
         'geburtsort',
         'straße',
@@ -56,7 +56,7 @@ class Profile extends Model
         'experiences' => 'array',
         'educations' => 'array',
         'languages' => 'array',
-        
+        'profileimg' => 'array',        
     ];
   
  

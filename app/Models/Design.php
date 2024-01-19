@@ -11,6 +11,10 @@ class Design extends Model
     protected $fillable=[
         'id',
         'dname',
+        'template',
         'designimg'
+    ];
+    protected $casts = [
+        'designimg' => 'array',
     ];
 }

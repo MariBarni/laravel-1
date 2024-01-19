@@ -29,6 +29,7 @@ class DesignResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('dname')->label(label:'Design Name')->minLength(2)->maxLength(255)->required(),
+                Forms\Components\TextInput::make('template')->label(label:'Template Name')->minLength(2)->maxLength(255)->required(),
                 FileUpload::make('designimg')->label(label:'Foto hochladen')->image()->required()->preserveFilenames()->directory('public/templa'),
                 //
             ]);
@@ -39,6 +40,7 @@ class DesignResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('dname')->label(label:'Design Name'),
+                Tables\Columns\TextColumn::make('template')->label(label:'Template Name'),
                 Tables\Columns\ImageColumn::make('designimg')->label(label:'Preview Bild '),
                 //
             ])

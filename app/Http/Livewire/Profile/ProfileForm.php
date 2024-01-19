@@ -62,9 +62,9 @@ class ProfileForm extends Component implements HasForms
     public null|string $token = null;     
     public null|string $name = null;
     public null|string $vorname = null;
-    public null|string $wunschposition= null;
+    public null|string $identifikation= null;
     public null|string $email= null;
-    public null|string $handynummer= null;
+    public null|string $telefonnummer= null;
     public null|string $geburtstag= null;
     public null|string $geburtsort= null;
     public null|string $straße= null;
@@ -83,9 +83,9 @@ class ProfileForm extends Component implements HasForms
         $this->form->fill([
             'name' => $profile->name,
             'vorname' => $profile->vorname,
-            'wunschposition'=> $profile->wunschposition,
+            'identifikation'=> $profile->identifikation,
             'email' => $profile->email,
-            'handynummer' => $profile->handynummer,
+            'telefonnummer' => $profile->telefonnummer,
             'geburtstag' => $profile->geburtstag,
             'geburtsort' => $profile->geburtsort,
             'straße' => $profile->straße,
@@ -110,10 +110,13 @@ class ProfileForm extends Component implements HasForms
                 ->schema([           
                     Forms\Components\TextInput::make('name')->minLength(2)->maxLength(255)->required(),            
                     Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),                
-                    Forms\Components\TextInput::make(name:'wunschposition')->label(label:'Wunschposition')->minLength(2)->maxLength(255)->columnSpan('full'),                  
+                    Forms\Components\Select::make('identifikation')->options(
+                        ['Männlich' => 'Männlich',
+                        'Weiblich' => 'Weiblich',
+                        'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(),                  
                     Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
-                    Forms\Components\TextInput::make('handynummer')->tel()->numeric(),               
-                    Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d/m/Y')->minDate(now()->subYears(120))->maxDate(now())->format('d/m/Y'),    
+                    Forms\Components\TextInput::make('telefonnummer')->tel()->numeric(),               
+                    Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d.m.Y')->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
                     Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
                     Forms\Components\TextInput::make('straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
                     Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required()->maxLength(10),            

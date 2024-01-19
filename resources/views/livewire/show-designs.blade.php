@@ -22,9 +22,9 @@
                     <span class="text-sm text-primary"> {{$design->dname}}</span>
                     <br/>
                     <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg"
-                     href="{{ url('/preview/' .  Auth::user()->id . '/'.$design->dname) }}">Vorschau</a>
+                     href="{{ url('/preview/' .  Auth::user()->id . '/'.$design->template) }}">Vorschau</a>
                     <a type="button" target="_blank" class="rounde mr-3 hidden bg-blue-700 py-1.5 px-6 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 md:mr-0 md:inline-block rounded-lg" 
-                    href="{{ url('/download/' .  Auth::user()->id. '/'.$design->dname) }}">Herunteladen</a>
+                    href="{{ url('/download/' .  Auth::user()->id. '/'.$design->template) }}">Herunteladen</a>
 
                   </div>
                 </div>

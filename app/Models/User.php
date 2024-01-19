@@ -72,7 +72,7 @@ class User extends Authenticatable implements FilamentUser
         $profile =Profile::whereEmail($this->email)->first();
         $plaintext=$profile->token;
         $expires_at =  now()->addDays(7);        
-        Mail::to($this->email)->queue(new Registrierung($plaintext, $expires_at));
+        Mail::to($this->email)->send(new Registrierung($plaintext, $expires_at));
     }
    
 }

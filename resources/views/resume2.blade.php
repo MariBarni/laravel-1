@@ -162,9 +162,9 @@ h2 {
                 <h3>Persönliches</h3>
                 <ul>
                     <li><img class="icon" src="{{ asset('storage/icons/envelope-fill-2.png') }}" >{{$profile->email}}</li>
-                     @if ($profile->handynummer == null)
+                     @if ($profile->telefonnummer == null)
                      @else
-                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-2.png') }}" >{{$profile->handynummer}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/phone-fill-2.png') }}" >{{$profile->telefonnummer}}</li>
                     @endif
                     <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-2.png') }}" >{{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</li>
                     @if ($profile->geburtstag == null)
@@ -197,9 +197,9 @@ h2 {
         <div class="right">
             <div class="header">
                 <h1>{{$profile->vorname}}  {{$profile->name}}</h1>
-                @if ($profile->wunschposition == null)
+                @if ($profile->identifikation == null)
                 @else
-                <h2>{{$profile->wunschposition}}</h2>
+                <h2>{{$profile->identifikation}}</h2>
                 @endif
             </div>
 
@@ -210,7 +210,7 @@ h2 {
                  @foreach ($experiences as $exp)
                 <div class="subblock">
                     <p class="subblock-title">{{$exp->jname}}  </p>
-                    <p class="subblock-date">{{$exp->cnname}} // {{$exp->started_at->format('d/m/Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d/m/Y') }}  @endif</p>
+                    <p class="subblock-date">{{$exp->cnname}} // {{$exp->started_at->format('d.m.Y')}} - @if ($exp->finished_at == null) heute @else {{ $exp->finished_at?->format('d.m.Y') }}  @endif</p>
                     <p class="subblock-text">{{$exp->description}}</p>
                 </div>
                   @endforeach                     
@@ -223,7 +223,7 @@ h2 {
                 @foreach ($educations as $edu)
                 <div class="subblock">
                     <p class="subblock-title">{{$edu->abschluss}}</p>
-                    <p class="subblock-date">{{$edu->bildungseinrichtung}} // {{$edu->started_at->format('d/m/Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d/m/Y') }} @endif</p>
+                    <p class="subblock-date">{{$edu->bildungseinrichtung}} // {{$edu->started_at->format('d.m.Y')}} - @if ($edu->finished_at == null) heute @else {{ $edu->finished_at?->format('d.m.Y') }} @endif</p>
                     <p class="subblock-text">{{$edu->fachrichtung}}</p>
                     <p class="subblock-text">{{$edu->orth}}</p>
                 </div>

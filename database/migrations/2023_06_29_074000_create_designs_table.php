@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
             $table->string('dname');
+            $table->string('template');
             $table->string('designimg')->nullable();  
             $table->timestamps();
         });
