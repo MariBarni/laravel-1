@@ -202,7 +202,10 @@ class MultiStepForm extends Component implements HasForms
                     
                     ])->columns(2) ->columnSpan(2),
                     
-                ])->columns(2) ->columnSpan(2)->submitAction(new HtmlString('<button wire:loading.attr="disabled" wire:key="submit" id="submit" wire:loading.remove
+                ])->columns(2) ->columnSpan(2)->submitAction(new HtmlString('<div style="margin: auto; width: 80%"><small><em>Ihre angegebenen Daten werden nur für die Erstellung des Lebenslaufes genutzt. Die Daten werden dabei nicht an Dritte weitergegeben. Rechtsgrundlage ist hierfür Art. 6 Abs. 1 S. 1 lit. a DDSGVO. Ihre angegebenen Daten werden nach 7 Tage gelöscht. 
+                Weitere Informationen zu den Widerrufsmöglichkeiten und zum Datenschutz finden Sie unter xxx (Link DSE)</em></small>
+                <br/>
+                <button style="margin-left:auto;" wire:loading.attr="disabled" wire:key="submit" id="submit" wire:loading.remove
                 wire:target="submit" class="filament-button filament-button-size-sm inline-flex items-center justify-center py-1 gap-1 
                 font-medium rounded-lg border outline-none min-h-[2rem] px-3 text-sm text-white shadow border-transparent bg-primary-600 type="submit">
                 <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/></svg>
@@ -219,7 +222,7 @@ class MultiStepForm extends Component implements HasForms
                     <span class="sr-only">Wird geladen...</span>
                 </div>
                 Bitte warten Sie...
-            </span> '))
+            </span> </div>'))
                 
                 ])->columns(2),              
 
