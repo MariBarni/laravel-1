@@ -98,11 +98,11 @@ class ResumeController extends Controller
 
       
 
-        public function preview($id, $name) {
+        public function preview($name) {
         if (Auth::check())
         {
         $user = auth()->user();
-        $profile=Profile::where(array('user_id' => $id))->first();
+        $profile=Profile::where(array('user_id' => $user->id))->first();
         $profileid=$profile->id;
        
         $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
@@ -117,11 +117,11 @@ class ResumeController extends Controller
         }
      
     }
-    public function herunteladen($id, $name) {
+    public function herunteladen($name) {
         if (Auth::check())
         {
         $user = auth()->user();
-        $profile=Profile::where(array('user_id' => $id))->first();
+        $profile=Profile::where(array('user_id' => $user->id))->first();
         $profileid=$profile->id;
         $educations=Education::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();
         $experiences=Experience::orderBy('sort', 'ASC')->where('profile_id', $profileid)->get();

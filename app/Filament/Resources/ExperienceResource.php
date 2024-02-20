@@ -37,10 +37,10 @@ class ExperienceResource extends Resource
                         $set('finished_at', null);
                         })->reactive()->nullable(),
                 Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
-                    ->required()->columns(2) ->columnSpan(2),
+                    ->required()->columns(2)->columnSpan(2)->displayFormat('d.m.Y'),
                 Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
                     ->hidden(fn ($get) => $get('currentj'))
-                    ->nullable()->withoutTime()->columns(2) ->columnSpan(2),
+                    ->nullable()->withoutTime()->columns(2)->columnSpan(2)->displayFormat('d.m.Y'),
                 Forms\Components\Select::make('profile_id')
                     ->relationship('profile', 'full_name')
                     ->required(),

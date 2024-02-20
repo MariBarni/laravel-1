@@ -47,6 +47,7 @@ use Carbon\Carbon;
 use Hash;
 use Session;
 use Illuminate\Support\Facades\Auth;
+use Livewire\TemporaryUploadedFile;
 
 
 
@@ -111,9 +112,10 @@ class ProfileForm extends Component implements HasForms
                     Forms\Components\TextInput::make('name')->minLength(2)->maxLength(255)->required(),            
                     Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),                
                     Forms\Components\Select::make('identifikation')->options(
-                        ['Männlich' => 'Männlich',
+                        [''=> '',
+                         'Männlich' => 'Männlich',
                         'Weiblich' => 'Weiblich',
-                        'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(),                  
+                        'Divers ' => 'Divers',])->default('')->disablePlaceholderSelection(),                  
                     Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
                     Forms\Components\TextInput::make('telefonnummer')->tel()->numeric(),               
                     Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d.m.Y')->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
@@ -122,7 +124,9 @@ class ProfileForm extends Component implements HasForms
                     Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required()->maxLength(10),            
                     Forms\Components\TextInput::make(name:'ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
                     Forms\Components\TextInput::make(name:'land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
-                    FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(),
+                    FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required()->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                        return (string) str($file->getClientOriginalName())->prepend(now()->timestamp);
+                    }),
                     Forms\Components\TagsInput::make(name:'tags')->label(label:'Fähigkeiten')->placeholder('Fähigkeit hinzufügen')
                     ->suggestions([
                         'tailwindcss',

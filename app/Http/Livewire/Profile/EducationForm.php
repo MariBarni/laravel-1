@@ -86,11 +86,11 @@ class EducationForm extends Component implements HasForms
                         ->reactive()
                         ->nullable(),
                    Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
-                        ->required()->columns(2) ->columnSpan(2),
+                        ->required()->columns(2)->columnSpan(2)->displayFormat('d.m.Y'),
                    Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
                         ->hidden(fn ($get) => $get('currente'))
                         ->nullable()
-                        ->withoutTime()->columns(2) ->columnSpan(2),
+                        ->withoutTime()->columns(2)->columnSpan(2)->displayFormat('d.m.Y'),
                 ])->orderable('sort')->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(2)->createItemButtonLabel('+')
             
             ]),

@@ -106,10 +106,11 @@ class MultiStepForm extends Component implements HasForms
                         Forms\Components\TextInput::make('name')->minLength(2)->maxLength(255)->required(),            
                         Forms\Components\TextInput::make('vorname')->minLength(2)->maxLength(255)->required(),
                         Forms\Components\Select::make('identifikation')->options(
-                            ['Männlich' => 'Männlich',
+                            [''=> '',
+                            'Männlich' => 'Männlich',
                             'Weiblich' => 'Weiblich',
-                            'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(),                            
-                        Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
+                            'Divers ' => 'Divers',])->default('')->disablePlaceholderSelection(),                            
+                        Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required()->unique(table: User::class)->unique(table: Profile::class),  
                         Forms\Components\TextInput::make('telefonnummer')->tel()->alphaDash(), 
                         Forms\Components\TextInput::make(name:'geburtstag')->label(label:'Geburtstag')->type('date')->required(),                 
                         Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
@@ -118,7 +119,7 @@ class MultiStepForm extends Component implements HasForms
                         Forms\Components\TextInput::make(name:'ort')->minLength(2)->maxLength(255)->label(label:'Ort')->required(),           
                         Forms\Components\TextInput::make(name:'land')->minLength(2)->maxLength(255)->label(label:'Land')->required(),
                         FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required()->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
-                            return (string) str($file->getClientOriginalName())->prepend('custom-prefix-');
+                            return (string) str($file->getClientOriginalName())->prepend(now()->timestamp);
                         }),
                        ]),
                     
@@ -135,10 +136,10 @@ class MultiStepForm extends Component implements HasForms
                             $set('finished_at', null);
                             })->reactive()->nullable(),
                            Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
-                           ->required()->columns(2) ->columnSpan(2),
+                           ->required()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
                            Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
                            ->hidden(fn ($get) => $get('currentj'))
-                           ->nullable()->withoutTime()->columns(2) ->columnSpan(2),
+                           ->nullable()->withoutTime()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
                        ])->orderable()->columns(2) ->columnSpan(2) ->minItems(0)->createItemButtonLabel('+')->relationship('experiences')                    
                     ]),
 
@@ -158,11 +159,11 @@ class MultiStepForm extends Component implements HasForms
                                 ->reactive()
                                 ->nullable(),
                            Forms\Components\DatePicker::make(name:'started_at')->label(label:'Von')
-                                ->required()->columns(2) ->columnSpan(2),
+                                ->required()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
                            Forms\Components\DatePicker::make(name:'finished_at')->label(label:'Bis')->afterOrEqual('started_at')
                                 ->hidden(fn ($get) => $get('currente'))
                                 ->nullable()
-                                ->withoutTime()->columns(2) ->columnSpan(2),
+                                ->withoutTime()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
                         ])->orderable()->columns(2) ->columnSpan(2) ->minItems(1)->defaultItems(1)->createItemButtonLabel('+')->relationship('educations')
                     
                     ]),

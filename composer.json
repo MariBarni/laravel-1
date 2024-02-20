@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^2.12",
         "nesbot/carbon": "^2.67",
+        "spatie/laravel-google-fonts": "^1.2",
         "spatie/laravel-tags": "^4.3",
         "wire-elements/modal": "^1.0"
     },

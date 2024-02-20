@@ -23,6 +23,7 @@ use Filament\Tables\Columns\Layout\Split;
 use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\Layout\Panel;
 use Filament\Tables\Columns\ImageColumn;
+use Livewire\TemporaryUploadedFile;
 
 
 class ProfileResource extends Resource
@@ -45,9 +46,10 @@ class ProfileResource extends Resource
                     ->required()
                     ->maxLength(255),
                     Forms\Components\Select::make('identifikation')->options(
-                        ['Männlich' => 'Männlich',
+                        [''=> '',
+                            'Männlich' => 'Männlich',
                         'Weiblich' => 'Weiblich',
-                        'Divers ' => 'Divers',])->default('Männlich')->disablePlaceholderSelection()->required(), 
+                        'Divers ' => 'Divers',])->default('')->disablePlaceholderSelection(), 
                 Forms\Components\TextInput::make('email')
                     ->required()
                     ->email()
@@ -71,7 +73,9 @@ class ProfileResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('land')
                     ->maxLength(255),
-                Forms\Components\FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(), 
+                Forms\Components\FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required()->getUploadedFileNameForStorageUsing(function (TemporaryUploadedFile $file): string {
+                    return (string) str($file->getClientOriginalName())->prepend(now()->timestamp);
+                }), 
                 Forms\Components\TagsInput::make(name:'tags')->label(label:'Fähigkeiten')->placeholder('Fähigkeit hinzufügen')
                          ->suggestions([
                              'tailwindcss',
