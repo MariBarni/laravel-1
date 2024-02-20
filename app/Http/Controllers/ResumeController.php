@@ -134,7 +134,7 @@ class ResumeController extends Controller
       
         Pdf::setOption(['isRemoteEnabled' => true, 'isHtml5ParserEnabled' => true, 'chroot' => '/public/storage/']);
         
-        $pdf->getDomPDF()->setBasePath('/public/storage')->set_option('enable_remote', TRUE);
+        $pdf->getDomPDF()->setBasePath('/public/storage/')->set_option('enable_remote', TRUE);
         
         //$pdf = Pdf::loadView('resume', $data);    
            // Render the HTML as PDF
@@ -143,6 +143,17 @@ class ResumeController extends Controller
            'experiences'=>$experiences,
            'languages'=>$languages,
            'datum' => $datum])->setOptions(['defaultFont' => 'sans-serif']);
+            #$pdf->setOption('logOutputFile', '/var/www/virtual/lebenslauf.stimme.de/storage/hauser.log');
+            #$pdf->setOption('debugPng', TRUE);
+            $pdf->setOption('isRemoteEnabled', TRUE);
+            $pdf->setOption('isHtml5ParserEnabled', TRUE);
+            $httpContext = array (
+                    'curl' => array (
+            'curl_verify_ssl_host'=>false
+                        )
+                    );
+            #$pdf->getDomPDF()->setHttpContext($httpContext);
+
 
         
         // Output the generated PDF to Browser
