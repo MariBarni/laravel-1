@@ -9,6 +9,8 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Closure;
+use Livewire\Component as Livewire;
 
 class EducationsRelationManager extends RelationManager
 {
@@ -34,19 +36,17 @@ class EducationsRelationManager extends RelationManager
                     ->minLength(2)->maxLength(255)->required(),                            
                 Forms\Components\Checkbox::make(name:'currente')
                     ->label(label:'Bis heute')
-                    ->afterStateUpdated(function (Closure $set, $state) {
-                                     $set('finished_at', null);
-                                 })
-                    ->reactive()
-                    ->nullable(),
+                    ->afterStateUpdated(function (Livewire $livewire, Closure $set,  $state, Closure $get) {
+                        $set('finished_at', null);
+                        })->reactive()->nullable(),
                 Forms\Components\DatePicker::make(name:'started_at')
                     ->label(label:'Von')
-                    ->required()->columns(2) ->columnSpan(2),
+                    ->required()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
                 Forms\Components\DatePicker::make(name:'finished_at')
                     ->label(label:'Bis')->afterOrEqual('started_at')
                     ->hidden(fn ($get) => $get('currente'))
                     ->nullable()
-                    ->withoutTime()->columns(2) ->columnSpan(2),
+                    ->withoutTime()->columns(2) ->columnSpan(2)->displayFormat('d.m.Y'),
             ]);
     }
 

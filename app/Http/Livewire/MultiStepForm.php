@@ -26,7 +26,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\BelongsToSelect;
 use Filament\Forms\Components\HasManyRepeater;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Filament\Forms\Components\MarkdownEditor;
+
 use Illuminate\Support\HtmlString;
 use Closure;
 use Filament\Forms\Components\SpatieTagsInput;

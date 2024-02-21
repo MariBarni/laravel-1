@@ -118,7 +118,7 @@ class ProfileForm extends Component implements HasForms
                         'Divers ' => 'Divers',])->default('')->disablePlaceholderSelection(),                  
                     Forms\Components\TextInput::make(name:'email')->label(label:'E-Mail Adresse')->minLength(2)->maxLength(255)->email()->required(),  
                     Forms\Components\TextInput::make('telefonnummer')->tel()->numeric(),               
-                    Forms\Components\DatePicker::make(name:'geburtstag')->label(label:'Geburtstag')->displayFormat('d.m.Y')->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
+                    Forms\Components\TextInput::make(name:'geburtstag')->label(label:'Geburtstag')->type('date')->required(),   
                     Forms\Components\TextInput::make('geburtsort')->minLength(2)->maxLength(255),            
                     Forms\Components\TextInput::make('straße')->minLength(2)->maxLength(255)->required()->columnSpan('full'),            
                     Forms\Components\TextInput::make(name:'plz')->label(label:'PLZ')->numeric()->required()->maxLength(10),            

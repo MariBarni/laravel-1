@@ -10,19 +10,21 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+
 class ProfileRelationManager extends RelationManager
 {
     protected static string $relationship = 'profile';
 
-    
-
+   
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)->default(function (RelationManager $livewire) {
+                        return $livewire->ownerRecord->name;
+                     }),
                 Forms\Components\TextInput::make('vorname')
                     ->required()
                     ->maxLength(255),
@@ -33,13 +35,12 @@ class ProfileRelationManager extends RelationManager
                 Forms\Components\TextInput::make('email')
                     ->required()
                     ->email()
-                    ->maxLength(255),
+                    ->maxLength(255)->default(function (RelationManager $livewire) {
+                        return $livewire->ownerRecord->email;
+                     }),
                 Forms\Components\TextInput::make('telefonnummer')
                     ->maxLength(255),
-                Forms\Components\DatePicker::make(name:'geburtstag')
-                    ->label(label:'Geburtstag')
-                    ->displayFormat('d.m.Y')
-                    ->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
+                Forms\Components\TextInput::make(name:'geburtstag')->label(label:'Geburtstag')->type('date')->required(), 
                 Forms\Components\TextInput::make('geburtsort')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('straße')

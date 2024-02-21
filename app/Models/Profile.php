@@ -56,7 +56,9 @@ class Profile extends Model
         'experiences' => 'array',
         'educations' => 'array',
         'languages' => 'array',
-        'profileimg' => 'array',        
+        'profileimg' => 'array',  
+        'expired_at' => 'datetime',
+        'geburtstag' => 'datetime',      
     ];
   
  

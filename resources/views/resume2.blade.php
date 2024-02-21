@@ -166,7 +166,7 @@ h2 {
                     <li><img class="icon" src="{{ asset('storage/icons/geo-alt-fill-2.png') }}" >{{$profile->straße}}, {{$profile->plz}} {{$profile->ort}}</li>
                     @if ($profile->geburtstag == null)
                     @else
-                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-2.png') }}" ></i>{{$profile->geburtstag}}</li>
+                    <li><img class="icon" src="{{ asset('storage/icons/cake2-fill-2.png') }}" ></i>{{$profile->geburtstag?->format('d.m.Y')}}</li>
                      @endif
                 </ul>
             </div>

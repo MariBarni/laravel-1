@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/preview/{name}', [ResumeController::class, 'preview'])->name('preview.show');
     Route::get('/download/{name}', [ResumeController::class, 'herunteladen'])->name('preview.download');
-    Route::get('/modelle/{id}', ShowDesigns::class)->name('model.show');
+    Route::get('/modelle', ShowDesigns::class)->name('model.show');
     
     
 });

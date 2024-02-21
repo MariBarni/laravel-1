@@ -56,10 +56,7 @@ class ProfileResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('telefonnummer')
                     ->maxLength(255),
-                Forms\Components\DatePicker::make(name:'geburtstag')
-                    ->label(label:'Geburtstag')
-                    ->displayFormat('d.m.Y')
-                    ->minDate(now()->subYears(90))->maxDate(now())->format('d.m.Y'),    
+                Forms\Components\TextInput::make(name:'geburtstag')->label(label:'Geburtstag')->type('date')->required(),     
                 Forms\Components\TextInput::make('geburtsort')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('straße')

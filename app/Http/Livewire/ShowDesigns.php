@@ -18,7 +18,7 @@ class ShowDesigns extends Component
     public $profileID;
   
 
-    public function mount($id)
+    public function mount()
     {
         if (Auth::check()){
             
@@ -35,10 +35,10 @@ class ShowDesigns extends Component
         }else{
             return Redirect::to('/');
         }
-        
-        
+          
     
     } 
+  
    
 
     public function render()
