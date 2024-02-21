@@ -57,6 +57,7 @@ class ProfileRelationManager extends RelationManager
                 Forms\Components\FileUpload::make('profileimg')->label(label:'Foto hochladen')->image()->required(), 
                 Forms\Components\TagsInput::make(name:'tags')->label(label:'Fähigkeiten')->placeholder('Fähigkeit hinzufügen')
                          ->suggestions([
+                            'Teamfähigkeit', 'Empathie', 'Kreativität', 'Zeitmanagement', 'Zuverlässigkeit', 'Selbstorganisation', 'Kommunikationsfähigkeit', 'Anpassungsfähigkeit',
                              'tailwindcss',
                              'alpinejs',
                              'laravel',

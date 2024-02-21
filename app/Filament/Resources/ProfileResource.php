@@ -75,6 +75,7 @@ class ProfileResource extends Resource
                 }), 
                 Forms\Components\TagsInput::make(name:'tags')->label(label:'Fähigkeiten')->placeholder('Fähigkeit hinzufügen')
                          ->suggestions([
+                            'Teamfähigkeit', 'Empathie', 'Kreativität', 'Zeitmanagement', 'Zuverlässigkeit', 'Selbstorganisation', 'Kommunikationsfähigkeit', 'Anpassungsfähigkeit',
                              'tailwindcss',
                              'alpinejs',
                              'laravel',

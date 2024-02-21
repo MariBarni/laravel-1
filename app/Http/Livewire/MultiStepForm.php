@@ -172,6 +172,7 @@ class MultiStepForm extends Component implements HasForms
                     ->schema([
                         TagsInput::make(name:'tags')->label(label:'Fähigkeiten')->placeholder('Fähigkeit hinzufügen')
                         ->suggestions([
+                            'Teamfähigkeit', 'Empathie', 'Kreativität', 'Zeitmanagement', 'Zuverlässigkeit', 'Selbstorganisation', 'Kommunikationsfähigkeit', 'Anpassungsfähigkeit',
                             'tailwindcss',
                             'alpinejs',
                             'laravel',
@@ -179,7 +180,7 @@ class MultiStepForm extends Component implements HasForms
                             'Marketing',
                             'Vertrieb',
                             'Web',
-                            'Produktmanagement',
+                            'Produktmanagement',                            
                         ])->columns(2) ->columnSpan(2)
                     ]),
    
