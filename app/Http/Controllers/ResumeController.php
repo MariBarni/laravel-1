@@ -51,28 +51,38 @@ class ResumeController extends Controller
         public function script()
         {
         
-         //delete expired records 
+         //delete expired records older than 7 days from Frontend
          $date  = Carbon::now();
          $profiles = Profile::where('expires_at', '<', $date )->get();
-         foreach($profiles as $prof){
-            $bild=$prof->profileimg;           
-            //Storage::move( "public/{$bild}", "public/new/{$bild}/");
-            Storage::delete( "public/{$bild}/");  
-            $user_pr=$prof->user_id;            
-            User::where('id', '=', $user_pr )->delete();
+         
+            foreach($profiles as $prof){
+                $bild=$prof->profileimg;           
+                //Storage::move( "public/{$bild}", "public/new/{$bild}/");
+                Storage::delete( "public/{$bild}/");  
+                $user_pr=$prof->user_id;            
+                User::where('id','=', $user_pr )->delete();
+             }
+                //delete records older than 7 days from BackEnd
+            $date  = Carbon::now()->subDays(6);
+            User::where([
+                ['created_at','<=', $date],
+                ['is_admin','=', '0'],
+            ])->delete();
+          
 
-         }
+            //delete photos older than 7 Days without Data Base conection
+            $files = collect( Storage::files("public"));
+            $files->each (function ($file) {
+                $lastModified = Storage::lastModified($file);
+                $lastModified = Carbon::parse($lastModified);
 
-   
-           /* $bild=$prof->profileimg;
-            $path = Storage::path($bild);
-            Storage::delete($bild);
-            $user_pr=$prof->user_id;
-            User::where('id', '=', $user_pr )->delete();*/
-
+                if (Carbon::now()->gt($lastModified->addDays(6))) {
+                    Storage::delete($file);
+                }
+            }   ); 
         }
    
-       
+      
 
         // ->delete();        
 
