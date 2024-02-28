@@ -63,7 +63,7 @@ class ResumeController extends Controller
                 User::where('id','=', $user_pr )->delete();
              }
                 //delete records older than 7 days from BackEnd
-            $date  = Carbon::now()->subDays(6);
+            $date  = Carbon::now()->subDays(7);
             User::where([
                 ['created_at','<=', $date],
                 ['is_admin','=', '0'],
@@ -76,7 +76,7 @@ class ResumeController extends Controller
                 $lastModified = Storage::lastModified($file);
                 $lastModified = Carbon::parse($lastModified);
 
-                if (Carbon::now()->gt($lastModified->addDays(6))) {
+                if (Carbon::now()->gt($lastModified->addDays(7))) {
                     Storage::delete($file);
                 }
             }   ); 
