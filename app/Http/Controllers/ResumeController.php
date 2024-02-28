@@ -80,6 +80,7 @@ class ResumeController extends Controller
                     Storage::delete($file);
                 }
             }   ); 
+            echo('Done');
         }
    
       
